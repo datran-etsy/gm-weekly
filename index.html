@@ -238,7 +238,7 @@
 </div>
 
 <div class="run-state">
-  run_date: 2026-05-04 &nbsp;|&nbsp; data_sources: Looker CQ-01, CQ-08 (fresh) · CQ-18 trend labels (prior run carry-forward) &nbsp;|&nbsp; bq_status: unavailable &nbsp;|&nbsp; confidence_ceiling: Likely explained
+  run_date: 2026-05-04 &nbsp;|&nbsp; data_sources: Looker CQ-01, CQ-08 (fresh) · CQ-18 trend labels (prior run carry-forward) &nbsp;|&nbsp; bq_status: unavailable &nbsp;|&nbsp; confidence_ceiling: Likely explained (Unexplained channels remain Unexplained)
 </div>
 
 <div class="pipeline-banner warn">
@@ -641,6 +641,7 @@
             <span class="decomp-factor" style="background:#e8f5e9;border-color:#4caf50;color:#2e7d32">Expected +95.5%</span>
             <span class="decomp-eq">vs Actual +95.5%</span>
             <span style="color:var(--sage);font-weight:600">✓ Consistent (&lt;1% gap)</span>
+            <span style="color:#888;font-style:italic;font-size:0.9em">(passes — but this is consistent with the re-attribution hypothesis, not with real demand improvement; see interpretation below)</span>
           </div>
           <p style="margin-top:10px"><strong>Primary driver (dominant): Feb 9 referrer reclassification (ongoing structural re-attribution).</strong> A referrer update on Feb 9 has been reclassifying visits previously attributed to Dark/Internal traffic as Display — this has inflated Display visit counts since mid-February. Prior week: +64.3% YoY. This week: +95.5% YoY. The acceleration is consistent with the structural re-attribution as the dominant ongoing factor. This is not a Display demand improvement — it is a reclassification event that suppresses the LY baseline while inflating the current period. The decomposition closing at +95.5% is consistent with this hypothesis: re-attributed visits carry the historical conversion rate of the traffic that was already converting (just not being attributed to Display), so CVR appears elevated vs. the un-reclassified LY baseline.</p>
           <p><strong>Secondary factor (monitoring): Incrementality test ended today (May 4).</strong> Dannie's Slack confirms: "incrementality test ended for display!" Next week's reading will be the first post-test observation and will help separate any test-related measurement effect from the structural re-attribution impact. The test ending itself does not explain the current-week +95.5% — its contribution will become visible in the next-week comparison.</p>
@@ -849,6 +850,7 @@
         <div class="expl-text">
           <p>Below materiality threshold (|delta| $14K, |YoY%| 3.0%). App is Tier 3 (spend-based). GMS and cost both declined exactly −3.0% — the GMS multiplier is applied directly to spend, so this is expected by construction. AOV of $30.00 is a fixed model constant. No visit attribution exists. This channel is behaving exactly as the attribution model predicts. The declining trend continues at a slow rate. No investigation required.</p>
         </div>
+        <div class="next-step-box"><strong>Next Step:</strong> No action required this week. Continue monitoring for deviation from expected GMS/cost co-movement. If the −3.0% rate accelerates, revisit App spend allocation.</div>
         <div class="confidence-note"><em>Confidence: Expected by construction — GMS and cost co-move at exactly −3.0%, within the &lt;5pp tolerance. Declining trend continues as expected.</em></div>
       </div>
     </div>
