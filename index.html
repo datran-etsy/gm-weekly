@@ -3,928 +3,365 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Growth Marketing Weekly Review — 2026-05-04</title>
+<title>Growth Marketing Weekly Review — 2026-05-11</title>
 <style>
-  :root {
-    --teal: #2B9B9E;
-    --plum: #2E203C;
-    --orange: #F1641E;
-    --sage: #7A9B5B;
-    --coral: #D96459;
-    --amber: #D4A03A;
-    --light-bg: #F8F7F5;
-    --border: #e0e0e0;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  ul { list-style: disc; padding-left: 20px; }
-  li { margin-bottom: 6px; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-size: 14px;
-    color: #2a2a2a;
-    background: #f5f5f5;
-    line-height: 1.6;
-  }
-  .header {
-    background: var(--plum);
-    color: white;
-    padding: 20px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .header h1 { font-size: 1.4em; font-weight: 700; }
-  .header .subtitle { font-size: 0.85em; opacity: 0.75; margin-top: 4px; }
-  .header-badge {
-    background: var(--teal);
-    color: white;
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 0.82em;
-    font-weight: 600;
-  }
-  .pipeline-banner {
-    width: 100%;
-    padding: 10px 32px;
-    font-size: 0.86em;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-  }
-  .pipeline-banner.warn { background: var(--orange); color: white; }
-  .pipeline-banner span { font-weight: 400; opacity: 0.9; margin-left: 8px; }
-  .container { max-width: 1400px; margin: 0 auto; padding: 24px 20px; }
-  .kpi-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  @media (max-width: 900px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } }
-  .kpi-card {
-    background: white;
-    border-radius: 10px;
-    padding: 20px 24px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    border-top: 4px solid var(--teal);
-  }
-  .kpi-card.neg { border-top-color: var(--coral); }
-  .kpi-card.warn { border-top-color: var(--amber); }
-  .kpi-card.pos { border-top-color: var(--sage); }
-  .kpi-card h3 { font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.06em; color: #666; margin-bottom: 8px; }
-  .kpi-value { font-size: 2em; font-weight: 800; }
-  .kpi-sub { font-size: 0.8em; color: #888; margin-top: 4px; }
-  .card {
-    background: white;
-    border-radius: 10px;
-    padding: 20px 24px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    margin-bottom: 20px;
-  }
-  .card h2 {
-    font-size: 1em;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--plum);
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--teal);
-    margin-bottom: 16px;
-  }
-  .card h3 {
-    font-size: 0.95em;
-    color: var(--plum);
-    margin: 20px 0 10px;
-    font-weight: 700;
-  }
-  table { width: 100%; border-collapse: collapse; font-size: 0.86em; }
-  th {
-    background: var(--plum);
-    color: white;
-    padding: 8px 10px;
-    text-align: left;
-    font-weight: 600;
-    font-size: 0.82em;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-  }
-  td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
-  tr:nth-child(even) td { background: #f9f9f9; }
-  tr:hover td { background: #fafcfd; }
-  tr:last-child td { border-bottom: none; }
-  .badge {
-    display: inline-block;
-    padding: 2px 9px;
-    border-radius: 10px;
-    font-size: 0.8em;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-  .badge-explained { background: #e8f5e9; color: #2e7d32; border: 1px solid #4caf50; }
-  .badge-likely { background: #fdf6e3; color: var(--amber); border: 1px solid var(--amber); }
-  .badge-unexplained { background: #fdf2f2; color: var(--coral); border: 1px solid var(--coral); }
-  .badge-expected { background: #e8f5f5; color: var(--teal); border: 1px solid var(--teal); }
-  .anomaly-chart { padding: 4px 0; }
-  .bar-row { display: flex; align-items: center; margin-bottom: 6px; gap: 8px; }
-  .bar-label { width: 150px; font-size: 0.82em; text-align: right; flex-shrink: 0; color: #444; }
-  .bar-track { flex: 1; height: 18px; background: #f0f0f0; border-radius: 3px; position: relative; overflow: visible; }
-  .bar-fill { height: 100%; border-radius: 3px; position: absolute; }
-  .bar-fill.pos { background: var(--sage); left: 50%; }
-  .bar-fill.neg { background: var(--coral); right: 50%; }
-  .bar-zero { position: absolute; left: 50%; top: -3px; bottom: -3px; width: 2px; background: #666; }
-  .bar-value { width: 60px; font-size: 0.8em; color: #444; flex-shrink: 0; }
-  blockquote {
-    border-left: 4px solid var(--orange);
-    background: #fef9e7;
-    padding: 10px 14px;
-    margin: 12px 0;
-    border-radius: 0 6px 6px 0;
-    font-size: 0.88em;
-    line-height: 1.6;
-    color: #555;
-  }
-  blockquote.info { border-left-color: var(--teal); background: #eef9f9; color: #2a5a5b; }
-  blockquote.warn { border-left-color: var(--coral); background: #fdf2f2; color: #7a2020; }
-  blockquote.flag { border-left-color: var(--amber); background: #fffbee; color: #5a4010; }
-  .exec-summary { line-height: 1.7; color: #444; }
-  .exec-summary p { margin-bottom: 10px; }
-  .channel-section { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
-  .channel-header {
-    background: var(--light-bg);
-    padding: 12px 16px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    user-select: none;
-  }
-  .channel-header:hover { background: #eef5f5; }
-  .channel-header h3 { margin: 0; font-size: 0.97em; color: var(--plum); font-weight: 700; }
-  .channel-header .ch-meta { display: flex; gap: 12px; align-items: center; font-size: 0.82em; }
-  .channel-body { padding: 14px 16px; display: none; }
-  .channel-body.open { display: block; }
-  .toggle-icon { font-size: 1em; color: var(--teal); font-weight: 700; min-width: 16px; text-align: center; }
-  .confidence-note { font-style: italic; color: #555; font-size: 0.86em; margin-top: 10px; padding: 6px 10px; background: #f8f8f8; border-left: 3px solid var(--amber); border-radius: 0 4px 4px 0; }
-  .next-step-box { margin-top: 12px; padding: 8px 12px; background: #f0f7f7; border-left: 3px solid var(--teal); border-radius: 0 6px 6px 0; font-size: 0.87em; }
-  .next-step-box strong { color: var(--teal); }
-  .flags-tier { margin-bottom: 18px; }
-  .flags-tier h3 {
-    font-size: 0.88em;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 6px 12px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    font-weight: 700;
-  }
-  .flags-tier.immediate h3 { background: var(--orange); color: white; }
-  .flags-tier.monitor h3 { background: var(--amber); color: white; }
-  .flags-tier.housekeeping h3 { background: #888; color: white; }
-  .flags-tier ul { padding-left: 20px; }
-  .flags-tier li { margin-bottom: 8px; line-height: 1.6; }
-  .conf-summary { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
-  .conf-count {
-    display: flex; flex-direction: column; align-items: center;
-    padding: 10px 18px; border-radius: 8px; min-width: 130px;
-  }
-  .conf-count .num { font-size: 1.8em; font-weight: 800; }
-  .conf-count .lbl { font-size: 0.78em; font-weight: 600; margin-top: 2px; }
-  .conf-count.explained { background: #e8f5e9; color: #2e7d32; }
-  .conf-count.likely { background: #fdf6e3; color: #b8860b; }
-  .conf-count.unexplained { background: #fdf2f2; color: var(--coral); }
-  .conf-count.expected { background: #e8f5f5; color: var(--teal); }
-  .tier-tag { font-size: 0.75em; background: #f0f0f0; padding: 2px 7px; border-radius: 4px; color: #555; white-space: nowrap; }
-  a { color: var(--teal); }
-  a:hover { text-decoration: underline; }
-  .footer { background: var(--plum); color: rgba(255,255,255,0.6); text-align: center; padding: 16px; font-size: 0.8em; margin-top: 24px; }
-  .seasonal-legend {
-    background: #f0f7f7; border-left: 4px solid var(--teal);
-    border-radius: 4px; padding: 12px 16px; margin-bottom: 20px;
-    font-size: 0.83em; line-height: 1.8; color: var(--plum);
-  }
-  code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
-  .inconsistency-banner {
-    background: #fdf2f2; border: 1px solid var(--coral); border-radius: 6px;
-    padding: 10px 14px; margin: 8px 0 12px; font-size: 0.88em; color: #7a2020;
-  }
-  .metrics-table { margin: 10px 0 14px; }
-  .metrics-table table { font-size: 0.85em; }
-  .pos { color: var(--sage); font-weight: 600; }
-  .neg { color: var(--coral); font-weight: 600; }
-  .neutral { color: #888; }
-  .expl-text { font-size: 0.88em; line-height: 1.7; color: #444; }
-  .decomp-row { display: flex; gap: 8px; align-items: center; font-size: 0.84em; margin: 6px 0; flex-wrap: wrap; }
-  .decomp-factor { background: #f0f7f7; border: 1px solid var(--teal); border-radius: 4px; padding: 2px 8px; color: var(--plum); font-weight: 600; }
-  .decomp-eq { color: #888; }
-  .run-state {
-    background: var(--plum); color: rgba(255,255,255,0.75);
-    font-size: 0.78em; padding: 8px 32px; font-family: monospace;
-    letter-spacing: 0.03em;
-  }
-  .dq-alert {
-    background: #fff3e0; border: 2px solid var(--orange); border-radius: 8px;
-    padding: 12px 16px; margin-bottom: 16px; font-size: 0.88em; color: #6d3200;
-    line-height: 1.7;
-  }
-  .dq-alert strong { color: var(--orange); }
+:root {
+  --teal: #2B9B9E;
+  --plum: #2E203C;
+  --orange: #F1641E;
+  --sage: #7A9B5B;
+  --coral: #D96459;
+  --amber: #D4A03A;
+  --bg: #FFFFFF;
+  --card: #F8F7F5;
+  --border: #E5E1DC;
+  --text: #2E203C;
+  --muted: #6B5F70;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; font-size: 15px; }
+.container { max-width: 1100px; margin: 0 auto; padding: 32px 24px 64px; }
+
+/* Header */
+header.report-header { border-bottom: 4px solid var(--plum); padding-bottom: 16px; margin-bottom: 24px; }
+header h1 { color: var(--plum); font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
+header .meta { color: var(--muted); margin-top: 8px; font-size: 14px; }
+header .meta a { color: var(--teal); text-decoration: none; }
+header .meta a:hover { text-decoration: underline; }
+
+/* Pipeline banner */
+.pipeline-banner { background: var(--card); border-left: 4px solid var(--amber); padding: 14px 20px; margin: 18px 0; border-radius: 4px; }
+.pipeline-banner.pipeline-clean { border-left-color: var(--teal); }
+.pipeline-banner.pipeline-event { border-left-color: var(--orange); }
+.pipeline-banner .title { font-weight: 700; color: var(--plum); margin-bottom: 6px; }
+.pipeline-banner ul { margin: 8px 0 0 22px; }
+.pipeline-banner li { margin-bottom: 4px; }
+
+/* KPI tiles */
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 20px 0; }
+.kpi { background: var(--card); padding: 16px; border-radius: 6px; border-left: 4px solid var(--teal); }
+.kpi .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.kpi .value { font-size: 24px; font-weight: 700; color: var(--plum); margin-top: 4px; }
+.kpi .yoy { font-size: 14px; margin-top: 2px; font-weight: 600; }
+.kpi .yoy.delta-pos { color: var(--sage); }
+.kpi .yoy.delta-neg { color: var(--coral); }
+
+/* Section */
+section { margin: 32px 0; }
+section h2 { font-size: 20px; color: var(--plum); margin-bottom: 14px; padding-bottom: 6px; border-bottom: 2px solid var(--border); }
+section h3 { font-size: 16px; color: var(--plum); margin: 18px 0 8px; }
+
+/* Summary paragraph */
+.summary p { margin-bottom: 12px; }
+.summary p strong { color: var(--plum); }
+
+/* Anomaly bar chart */
+.bar-chart { background: var(--card); padding: 18px 20px; border-radius: 6px; }
+.bar-row { display: grid; grid-template-columns: 160px 1fr 80px; gap: 12px; align-items: center; margin-bottom: 8px; }
+.bar-label { font-size: 13px; font-weight: 600; text-align: right; color: var(--plum); }
+.bar-track { position: relative; height: 22px; background: white; border: 1px solid var(--border); border-radius: 2px; }
+.bar-axis { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--muted); opacity: 0.4; z-index: 1; }
+.bar-fill { position: absolute; top: 1px; bottom: 1px; opacity: 0.85; }
+.bar-fill.bar-right { left: 50%; }
+.bar-fill.bar-left { right: 50%; }
+.bar-value { font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: var(--plum); }
+.bar-legend { margin-top: 10px; font-size: 12px; color: var(--muted); }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+table th { background: var(--plum); color: white; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 13px; cursor: pointer; user-select: none; }
+table th.sortable:hover { background: #3D2D4F; }
+table th.sortable::after { content: " ↕"; opacity: 0.4; font-size: 11px; }
+table th.sort-asc::after { content: " ↑"; opacity: 1; }
+table th.sort-desc::after { content: " ↓"; opacity: 1; }
+table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+table tr:nth-child(even) td { background: var(--card); }
+table.compact td { padding: 6px 10px; font-size: 13px; }
+.delta-pos { color: var(--sage); font-weight: 600; }
+.delta-neg { color: var(--coral); font-weight: 600; }
+
+/* Confidence summary */
+.conf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin: 14px 0; }
+.conf-chip { background: var(--card); padding: 12px 14px; border-radius: 4px; border-left: 4px solid var(--muted); }
+.conf-chip .chip-label { font-weight: 700; font-size: 13px; }
+.conf-chip .chip-count { float: right; font-weight: 700; background: var(--plum); color: white; padding: 2px 8px; border-radius: 999px; font-size: 12px; }
+.conf-chip .chip-channels { display: block; font-size: 12px; color: var(--muted); margin-top: 6px; }
+.conf-chip.conf-explained { border-left-color: var(--sage); }
+.conf-chip.conf-likely { border-left-color: var(--amber); }
+.conf-chip.conf-unexplained { border-left-color: var(--coral); }
+.conf-chip.conf-expected { border-left-color: var(--teal); }
+
+/* Confidence badge */
+.conf-badge { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; color: white; }
+.conf-badge.conf-explained { background: var(--sage); }
+.conf-badge.conf-likely { background: var(--amber); color: var(--plum); }
+.conf-badge.conf-unexplained { background: var(--coral); }
+.conf-badge.conf-expected { background: var(--teal); }
+
+/* Tier badge */
+.tier-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; background: var(--card); color: var(--plum); border: 1px solid var(--border); margin-left: 6px; }
+.tier-badge.tier-1 { background: #E8F4F4; }
+.tier-badge.tier-2 { background: #FAF1E8; }
+.tier-badge.tier-3 { background: #F4EFEC; }
+
+.delta-tag { display: inline-block; margin-left: 8px; padding: 2px 8px; background: var(--card); border-radius: 4px; font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: var(--plum); }
+
+/* Channel detail */
+details.channel-detail { background: var(--card); margin-bottom: 12px; border-radius: 6px; padding: 0; border: 1px solid var(--border); }
+details.channel-detail summary { cursor: pointer; padding: 14px 18px; font-weight: 600; color: var(--plum); list-style: none; display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+details.channel-detail summary::-webkit-details-marker { display: none; }
+details.channel-detail summary::before { content: "▶"; margin-right: 8px; transition: transform 0.2s; font-size: 10px; color: var(--muted); }
+details.channel-detail[open] summary::before { transform: rotate(90deg); }
+.channel-name { font-size: 16px; font-weight: 700; }
+details.channel-detail > *:not(summary) { margin: 0 18px 14px; }
+details.channel-detail table { margin-top: 8px; margin-bottom: 12px; }
+details.channel-detail .meta-line { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+.callout { background: white; border-left: 4px solid var(--amber); padding: 10px 14px; margin: 12px 0; border-radius: 4px; font-size: 13px; }
+.callout.callout-warn { border-left-color: var(--orange); background: #FEF6EE; }
+
+/* Brief list */
+.brief-list { background: var(--card); padding: 16px 20px 16px 36px; border-radius: 6px; }
+.brief-list li { margin-bottom: 8px; font-size: 14px; }
+.brief-list li:last-child { margin-bottom: 0; }
+
+/* Flags */
+.flags-section h3 { display: flex; align-items: center; gap: 8px; margin-top: 16px; }
+.flags-section .flag-block { background: var(--card); padding: 14px 20px 14px 24px; border-left: 4px solid var(--orange); border-radius: 4px; margin-bottom: 12px; }
+.flags-section .flag-block.monitor { border-left-color: var(--amber); }
+.flags-section .flag-block.housekeeping { border-left-color: var(--muted); }
+.flags-section ul { margin-left: 18px; }
+.flags-section li { margin-bottom: 6px; }
+
+footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--muted); font-size: 12px; text-align: center; }
+
+code { background: var(--card); padding: 1px 5px; border-radius: 3px; font-family: ui-monospace, Menlo, monospace; font-size: 13px; }
+
+@media (max-width: 700px) {
+  .bar-row { grid-template-columns: 90px 1fr 60px; gap: 6px; }
+  .bar-label { font-size: 11px; }
+}
 </style>
 </head>
 <body>
-
-<div class="header">
-  <div>
-    <h1><a href="https://looker.etsycloud.com/dashboards/9084?Date+Date=7+day&amp;Team=-ATL+Extension%2C-Other%2C-Seller%2C-ATL" target="_blank" style="color:inherit;text-decoration:none;border-bottom:2px solid rgba(255,255,255,0.4)">Growth Marketing Weekly Review</a></h1>
-    <div class="subtitle">Period: 7-day ending 2026-05-04 &nbsp;|&nbsp; Dashboard: 9084 &nbsp;|&nbsp; All channels (excl. ATL Extension, Other, Seller, ATL)</div>
-  </div>
-  <div class="header-badge">2026-05-04</div>
-</div>
-
-<div class="run-state">
-  run_date: 2026-05-04 &nbsp;|&nbsp; data_sources: Looker CQ-01, CQ-08 (fresh) · CQ-18 trend labels (prior run carry-forward) &nbsp;|&nbsp; bq_status: unavailable &nbsp;|&nbsp; confidence_ceiling: Likely explained (Unexplained channels remain Unexplained)
-</div>
-
-<div class="pipeline-banner warn">
-  ⚠ Data quality concerns affect 3 of the 4 largest GMS contributors — treat the +17.4% headline GMS figure as provisional.
-  <span>Display (+$2.3M): visit re-attribution ongoing since Feb 9. Paid Social (+$2.3M): LY multiplier deflation suspected (Dannie's Slack, May 4). Affiliates (+$520K): Rakuten cashback bug active ~2 weeks. Additionally: SEM NB decomposition inconsistency, Video visit spike unexplained, SEO bot visits confirmed. No single clean pipeline event confirmed per 3-part test.</span>
-</div>
-
 <div class="container">
 
-  <!-- KPI Row -->
-  <div class="kpi-row">
-    <div class="kpi-card warn">
-      <h3>GM Total Attributed GMS</h3>
-      <div class="kpi-value" style="color:var(--amber)">+17.4%</div>
-      <div class="kpi-sub">$83.5M vs $71.1M LY &nbsp;|&nbsp; ⚠ 3 of 4 top contributors carry DQ flags</div>
-    </div>
-    <div class="kpi-card pos">
-      <h3>New Buyer Receipts</h3>
-      <div class="kpi-value" style="color:var(--sage)">+4.7%</div>
-      <div class="kpi-sub">356,844 vs 340,667 LY &nbsp;|&nbsp; all channels</div>
-    </div>
-    <div class="kpi-card pos">
-      <h3>Lapsed Buyer Receipts</h3>
-      <div class="kpi-value" style="color:var(--sage)">+10.3%</div>
-      <div class="kpi-sub">524,319 vs 475,283 LY &nbsp;|&nbsp; 2:1 rate vs new buyers</div>
-    </div>
-    <div class="kpi-card pos">
-      <h3>GM Total Spend</h3>
-      <div class="kpi-value" style="color:var(--sage)">−3.2%</div>
-      <div class="kpi-sub">$10.77M vs $11.13M LY &nbsp;|&nbsp; spend declining while GMS rising</div>
-    </div>
-  </div>
+<header class="report-header">
+<h1>Growth Marketing Weekly Review — 2026-05-11</h1>
+<div class="meta">Review period: <strong>2026-05-05 → 2026-05-11</strong> vs. same period last year · Dashboard: <a href="https://looker.etsycloud.com/dashboards/9084?Date+Date=7+day&amp;Team=-ATL+Extension%2C-Other%2C-Seller%2C-ATL" target="_blank">9084 — Growth Marketing | 2025 OKR Scorecard</a></div>
+</header>
 
-  <!-- Weekly Snapshot -->
-  <div class="card">
-    <h2>Weekly Snapshot</h2>
+<div class="pipeline-banner pipeline-clean">
+<div class="title">⚑ No team-wide pipeline event detected this week</div>
+<p>Channels moved with mixed directions consistent with their individual anomaly scores. Two channel-specific methodology shifts are active and inform this week's explanations:</p>
+<ul>
+<li><strong>Affiliates Rakuten migration (Awin → Rakuten)</strong> — cookie window cut from 30 days to 7 days across all networks; LTK commission reduced 10% → 8%; iOS BOE deep-linking failures. Source: <code>#performance_analytics_ac_team</code>, <code>#rakuten-migration</code>.</li>
+<li><strong>Mid-April 2026 multiplier launch</strong> — Eurie Kim confirmed in <code>#performance_social</code> that new finance multipliers were launched in April with backdating applied to 2025 values. Candidate mechanism for the Display anomaly.</li>
+</ul>
+</div>
 
-    <div class="dq-alert">
-      <strong>Data Quality Advisory:</strong> The +17.4% headline GM GMS should be interpreted with caution. Three of the four largest absolute GMS contributors have confirmed or strongly suspected methodology issues: Display (+$2.3M, +95.5%) is inflated by ongoing visit re-attribution since Feb 9; Paid Social (+$2.3M, +50.9%) appears to reflect LY multiplier deflation rather than real demand growth; Affiliates (+$520K, +25.7%) may be overstated due to the Rakuten cashback bug. Channels with clean, unambiguous positive signals this week are PLA (+$5.4M), SEO (+$94K, though CVR affected by bot visits), and SEM Brand (intentional decline, working as designed).
-    </div>
+<section class="summary">
+<h2>Weekly Snapshot</h2>
+<p>Total Growth Marketing GMS landed at <strong>$77.76M (+19.9% Y/Y)</strong>, the strongest weekly Y/Y growth print in months. The headline mover is <strong>Display (+109.6%, +$2.39M)</strong>, which is anomalous against its own 12-week trend and currently has no Slack/Glean source explaining the move — investigation flagged. <strong>Affiliates (+20.3%)</strong> and <strong>SEM Brand (−18.6%)</strong> both moved against their longer trends but have known methodology shifts (Rakuten migration; Q1 paid budget cut) supporting the direction.</p>
+<p>Week-over-week, total GMS was <strong>down approximately 16.1%</strong> from $92.72M the prior calendar week (week of 2026-05-04) — typical post-Mother's Day decay pattern. Note that the rolling 7-day review window and 26-week calendar-week boundaries do not align exactly, so this figure is approximate.</p>
+</section>
 
-    <div class="exec-summary">
-      <p>Total GM attributed GMS grew <strong>+17.4% YoY</strong> to <strong>$83.5M</strong> against a prior-year base of $71.1M. 8 of 10 GM channels are positive YoY; however, the methodology flags above mean the clean positive channels are fewer. The strongest unambiguous signal is <strong>PLA</strong>, which grew +$5.4M (+18.6% YoY) with a consistent decomposition and documented business context. SEM Non-Brand (+$2.1M, +22.3%) showed growth but with an inconsistent decomposition — see channel section.</p>
-      <p>Total platform GMS (all channels via CQ-08) was +10.7% to $194.6M. GM spend declined −3.2% while GM GMS grew +17.4%, suggesting meaningful efficiency improvement among the clean channels. Lapsed buyer receipts are growing at a 2:1 rate vs. new buyers (+10.3% vs +4.7%), which may reflect the current channel mix being more effective at reactivating prior customers, or Affiliates cashback mechanics inflating lapsed buyer counts — team should verify.</p>
-    </div>
+<div class="kpi-grid">
+<div class="kpi"><div class="label">Total GMS</div><div class="value">$77.76M</div><div class="yoy delta-pos">+19.9% Y/Y</div></div>
+<div class="kpi"><div class="label">Total Receipts</div><div class="value">2,388,614</div><div class="yoy delta-pos">+9.3% Y/Y</div></div>
+<div class="kpi"><div class="label">New Buyer Receipts</div><div class="value">226,273</div><div class="yoy delta-pos">+5.2% Y/Y</div></div>
+<div class="kpi"><div class="label">App Installs (28d)</div><div class="value">2,244,733</div><div class="yoy delta-neg">−1.1% Y/Y</div></div>
+</div>
 
-    <h3>Top Movers by Absolute GMS Delta</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Channel</th>
-          <th>Tier</th>
-          <th>GMS $ Delta</th>
-          <th>GMS YoY %</th>
-          <th>Primary Driver / Flag</th>
-          <th>Confidence</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>PLA</strong></td>
-          <td><span class="tier-tag">MTA-Full (T1)</span></td>
-          <td><span class="pos">+$5,413,336</span></td>
-          <td><span class="pos">+18.6%</span></td>
-          <td>Visits-led (+29.4%), AOV tailwind (+9.8%)</td>
-          <td><span class="badge badge-likely">Likely explained</span></td>
-        </tr>
-        <tr>
-          <td><strong>Display</strong></td>
-          <td><span class="tier-tag">MTA-Full (T1)</span></td>
-          <td><span class="pos">+$2,290,574</span></td>
-          <td><span class="pos">+95.5%</span></td>
-          <td>⚠ Feb 9 visit re-attribution (primary) — not a real demand improvement</td>
-          <td><span class="badge badge-likely">Likely explained</span></td>
-        </tr>
-        <tr>
-          <td><strong>Paid Social</strong></td>
-          <td><span class="tier-tag">Blended T1/T3 (Pattern H)</span></td>
-          <td><span class="pos">+$2,257,655</span></td>
-          <td><span class="pos">+50.9%</span></td>
-          <td>⚠ LY multiplier deflation (suspected) — GMS is NOT an organic demand signal this week</td>
-          <td><span class="badge badge-likely">Likely explained</span></td>
-        </tr>
-        <tr>
-          <td><strong>SEM Non-Brand</strong></td>
-          <td><span class="tier-tag">MTA-Full (T1)</span></td>
-          <td><span class="pos">+$2,142,091</span></td>
-          <td><span class="pos">+22.3%</span></td>
-          <td>⚠ Decomposition inconsistent (gap 21.1%) — cause not established</td>
-          <td><span class="badge badge-unexplained">Unexplained</span></td>
-        </tr>
-        <tr>
-          <td><strong>Affiliates</strong></td>
-          <td><span class="tier-tag">Mixed (T2)</span></td>
-          <td><span class="pos">+$519,863</span></td>
-          <td><span class="pos">+25.7%</span></td>
-          <td>⚠ Rakuten bug may overstate; underlying visits +20.4%, AOV +8.3%</td>
-          <td><span class="badge badge-likely">Likely explained</span></td>
-        </tr>
-        <tr>
-          <td><strong>SEM Brand</strong></td>
-          <td><span class="tier-tag">Mixed (T2)</span></td>
-          <td><span class="neg">−$212,438</span></td>
-          <td><span class="neg">−20.6%</span></td>
-          <td>Deliberate spend cut (−85% cost); DE NVR test ended May 4 — working as designed</td>
-          <td><span class="badge badge-likely">Likely explained</span></td>
-        </tr>
-      </tbody>
-    </table>
+<section>
+<h2>Channel Anomaly Scores</h2>
+<div class="bar-chart">
+<div class="bar-row">
+<div class="bar-label">Display ⚑</div>
+<div class="bar-track"><div class="bar-axis"></div><div class="bar-fill bar-right" style="width:50.0%;background:var(--sage)"></div></div>
+<div class="bar-value">+32.9pp</div>
+</div>
+<div class="bar-row">
+<div class="bar-label">Video</div>
+<div class="bar-track"><div class="bar-axis"></div><div class="bar-fill bar-left" style="width:15.223336371923429%;background:var(--coral)"></div></div>
+<div class="bar-value">-10.0pp</div>
+</div>
+<div class="bar-row">
+<div class="bar-label">Social Creator Co</div>
+<div class="bar-track"><div class="bar-axis"></div><div class="bar-fill bar-left" style="width:14.797933758735947%;background:var(--coral)"></div></div>
+<div class="bar-value">-9.7pp</div>
+</div>
+<div class="bar-row">
+<div class="bar-label">Affiliates ⚑</div>
+<div class="bar-track"><div class="bar-axis"></div><div class="bar-fill bar-left" style="width:11.941659070191433%;background:var(--coral)"></div></div>
+<div class="bar-value">-7.9pp</div>
+</div>
+<div class="bar-row">
+<div class="bar-label">SEM - Brand ⚑</div>
+<div class="bar-track"><div class="bar-axis"></div><div class="bar-fill bar-right" style="width:8.58401701610453%;background:var(--sage)"></div></div>
+<div class="bar-value">+5.7pp</div>
+</div>
+<div class="bar-row">
+<div class="bar-label">Seo</div>
+<div class="bar-track"><div class="bar-axis"></div><div class="bar-fill bar-right" style="width:6.62412640534792%;background:var(--sage)"></div></div>
+<div class="bar-value">+4.4pp</div>
+</div>
+<div class="bar-row">
+<div class="bar-label">SEM - Non-Brand</div>
+<div class="bar-track"><div class="bar-axis"></div><div class="bar-fill bar-left" style="width:5.423883318140383%;background:var(--coral)"></div></div>
+<div class="bar-value">-3.6pp</div>
+</div>
+<div class="bar-row">
+<div class="bar-label">Paid Social</div>
+<div class="bar-track"><div class="bar-axis"></div><div class="bar-fill bar-left" style="width:4.481920388939533%;background:var(--coral)"></div></div>
+<div class="bar-value">-3.0pp</div>
+</div>
+<div class="bar-row">
+<div class="bar-label">PLA</div>
+<div class="bar-track"><div class="bar-axis"></div><div class="bar-fill bar-right" style="width:4.269219082345792%;background:var(--sage)"></div></div>
+<div class="bar-value">+2.8pp</div>
+</div>
+<div class="bar-row">
+<div class="bar-label">App</div>
+<div class="bar-track"><div class="bar-axis"></div><div class="bar-fill bar-left" style="width:0.12154360376785173%;background:var(--coral)"></div></div>
+<div class="bar-value">-0.1pp</div>
+</div>
 
-    <h3 style="margin-top:20px">Confidence Summary</h3>
-    <div class="conf-summary">
-      <div class="conf-count explained"><span class="num">0</span><span class="lbl">Explained</span></div>
-      <div class="conf-count likely"><span class="num">6</span><span class="lbl">Likely explained</span></div>
-      <div class="conf-count unexplained"><span class="num">3</span><span class="lbl">Unexplained</span></div>
-      <div class="conf-count expected"><span class="num">1</span><span class="lbl">Expected by construction</span></div>
-    </div>
-    <p style="font-size:0.85em;color:#666;margin-bottom:4px"><strong>Likely explained (6):</strong> PLA, SEO, Display, Paid Social, Affiliates, SEM Brand</p>
-    <p style="font-size:0.85em;color:var(--coral);margin-bottom:4px"><strong>Unexplained (3):</strong> SEM Non-Brand (decomposition inconsistent, no driver established), Video (visit spike +226.6% unresolved, GMS/spend gap 21pp), Social Creator Co (GMS/spend gap 36.5pp — Pattern G unresolved)</p>
-    <p style="font-size:0.85em;color:var(--teal);margin-bottom:8px"><strong>Expected by construction (1):</strong> App (GMS and cost both exactly −3.0%)</p>
-    <p style="font-size:0.84em;color:#888"><em>Note: <code>Explained</code> is not achievable this run — BQ experiment registry unavailable. The BQ unavailability cap applies only to the ceiling (no channel can reach "Explained") — it does NOT upgrade channels from "Unexplained" to "Likely explained." Channels without a named, validated causal mechanism remain Unexplained regardless of BQ status.</em></p>
+<div class="bar-legend">Anomaly score = this-week GMS Y/Y % minus 12-week median. <span style="color:var(--coral)">Red</span> = below trend, <span style="color:var(--sage)">green</span> = above. ⚑ = exceeds channel-specific volatility threshold (i.e., a real break from baseline, not normal weekly noise).</div>
+</div>
+</section>
 
-    <blockquote class="info" style="margin-top:14px">
-      <strong>Decomposition methodology:</strong> For Tier 1 (PLA, SEO, SEM NB, Display) and Tier 2 (Paid Social, Affiliates, SEM Brand), GMS YoY% is checked against (1+ΔVisits)(1+ΔCVR)(1+ΔAOV)−1. Gap ≥ 20% → decomposition inconsistent → analysis stops, channel is Unexplained, no driver declared. For Tier 3 (Video, Social Creator Co, App), CVR and AOV are mathematical artifacts of the attribution model — <strong>never</strong> reported as real demand signals; GMS = spend × static multiplier.
-    </blockquote>
-  </div>
+<section>
+<h2>Top Movers</h2>
+<table id="top-movers" class="sortable-table">
+<thead><tr><th class="sortable">Channel</th><th class="sortable">Tier</th><th class="sortable">GMS $ Delta</th><th class="sortable">GMS YoY %</th><th class="sortable">Primary Driver</th><th class="sortable">Confidence</th></tr></thead>
+<tbody>
+<tr><td>PLA</td><td>1</td><td class="delta-pos">+$5.59M</td><td class="delta-pos">+21.5%</td><td>Mixed</td><td><span class="conf-badge conf-likely">Likely explained</span></td></tr><tr><td>Display</td><td>1</td><td class="delta-pos">+$2.39M</td><td class="delta-pos">+109.6%</td><td>Mixed</td><td><span class="conf-badge conf-unexplained">Unexplained</span></td></tr><tr><td>SEM - Non-Brand</td><td>1</td><td class="delta-pos">+$2.21M</td><td class="delta-pos">+25.8%</td><td>Mixed</td><td><span class="conf-badge conf-unexplained">Unexplained</span></td></tr>
+</tbody>
+</table>
+<p style="font-size:13px;color:var(--muted);margin-top:8px"><em>Confidence is capped at <code>Likely explained</code> this run — the only active experiment (<code>de_css_pla_q1_2026</code>) has no <code>iroi_exp</code> readout yet, so <code>Explained</code> is not achievable.</em></p>
+</section>
 
-  <!-- Anomaly Score Bar Chart -->
-  <div class="card">
-    <h2>Anomaly Scores — GMS YoY % by Channel</h2>
-    <p style="font-size:0.82em;color:#888;margin-bottom:14px">Scores set to GMS YoY% for this run. Scale: ±100%. Sorted descending by YoY.</p>
-    <div class="anomaly-chart">
-      <div class="bar-row">
-        <div class="bar-label">Display ⚠</div>
-        <div class="bar-track"><div class="bar-zero"></div><div class="bar-fill pos" style="width:calc(95.5/200*50%)"></div></div>
-        <div class="bar-value"><span class="pos">+95.5%</span></div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Paid Social ⚠</div>
-        <div class="bar-track"><div class="bar-zero"></div><div class="bar-fill pos" style="width:calc(50.9/200*50%)"></div></div>
-        <div class="bar-value"><span class="pos">+50.9%</span></div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Affiliates ⚠</div>
-        <div class="bar-track"><div class="bar-zero"></div><div class="bar-fill pos" style="width:calc(25.7/200*50%)"></div></div>
-        <div class="bar-value"><span class="pos">+25.7%</span></div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">SEM Non-Brand ⚠</div>
-        <div class="bar-track"><div class="bar-zero"></div><div class="bar-fill pos" style="width:calc(22.3/200*50%)"></div></div>
-        <div class="bar-value"><span class="pos">+22.3%</span></div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">PLA ✓</div>
-        <div class="bar-track"><div class="bar-zero"></div><div class="bar-fill pos" style="width:calc(18.6/200*50%)"></div></div>
-        <div class="bar-value"><span class="pos">+18.6%</span></div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">SEO</div>
-        <div class="bar-track"><div class="bar-zero"></div><div class="bar-fill pos" style="width:calc(0.5/200*50%)"></div></div>
-        <div class="bar-value"><span class="neutral">+0.5%</span></div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Social Creator Co ⚠</div>
-        <div class="bar-track"><div class="bar-zero"></div><div class="bar-fill neg" style="width:calc(1.5/200*50%)"></div></div>
-        <div class="bar-value"><span class="neg">−1.5%</span></div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">App</div>
-        <div class="bar-track"><div class="bar-zero"></div><div class="bar-fill neg" style="width:calc(3.0/200*50%)"></div></div>
-        <div class="bar-value"><span class="neg">−3.0%</span></div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Video ⚠</div>
-        <div class="bar-track"><div class="bar-zero"></div><div class="bar-fill neg" style="width:calc(3.1/200*50%)"></div></div>
-        <div class="bar-value"><span class="neg">−3.1%</span></div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">SEM Brand</div>
-        <div class="bar-track"><div class="bar-zero"></div><div class="bar-fill neg" style="width:calc(20.6/200*50%)"></div></div>
-        <div class="bar-value"><span class="neg">−20.6%</span></div>
-      </div>
-    </div>
-    <p style="font-size:0.79em;color:#888;margin-top:10px">⚠ = active data quality flag on this channel's metrics this week. ✓ = clean signal, no active DQ concerns.</p>
-  </div>
+<section>
+<h2>Confidence Summary</h2>
+<div class="conf-grid">
+<div class="conf-chip conf-explained"><span class="chip-label">Explained</span><span class="chip-count">0</span><span class="chip-channels">—</span></div><div class="conf-chip conf-likely"><span class="chip-label">Likely explained</span><span class="chip-count">7</span><span class="chip-channels">PLA, Paid Social, Seo, Social Creator Co, Affiliates, Video, SEM - Brand</span></div><div class="conf-chip conf-unexplained"><span class="chip-label">Unexplained</span><span class="chip-count">2</span><span class="chip-channels">Display, SEM - Non-Brand</span></div><div class="conf-chip conf-expected"><span class="chip-label">Expected by construction</span><span class="chip-count">1</span><span class="chip-channels">App</span></div>
+</div>
+</section>
 
-  <!-- Seasonal norms note -->
-  <div class="seasonal-legend">
-    <strong>Seasonal norms — note on this run</strong><br>
-    CQ-18 (26-week trend) data exceeded token limits on re-query. Trend direction labels (Rising / Flat / Mixed / Declining) are carried forward from the prior run (week ending 2026-04-27). Per-channel seasonal mean ± SD bands are not refreshed this run — do not use for within-band comparisons. Trend labels are directional guidance only.
-  </div>
+<section id="metric-movements-by-channel">
+<h2>Metric Movements by Channel</h2>
+<p style="font-size:13px;color:var(--muted)">Deep channels (full causal write-up) appear first, ordered by absolute GMS dollar delta. Click a header to collapse/expand.</p>
+<details class="channel-detail" open>
+<summary><span class="channel-name">Display</span> <span class="tier-badge tier-1">Tier 1</span> <span class="delta-tag">+$2.39M · +109.6%</span> <span class="conf-badge conf-unexplained">Unexplained</span></summary>
+<table class="channel-metrics"><thead><tr><th>Metric</th><th>Current (7d)</th><th>Prior Year (7d)</th><th>YoY Change</th></tr></thead><tbody><tr><td>GMS</td><td>$4.57M</td><td>$2.18M</td><td class="delta-pos">+109.6%</td></tr><tr><td>Visits</td><td>2,634,893</td><td>1,937,197</td><td class="delta-pos">+36.0%</td></tr><tr><td>Receipts</td><td>163,031</td><td>79,296</td><td class="delta-pos">+105.6%</td></tr><tr><td>CVR</td><td>6.19%</td><td>4.09%</td><td class="delta-pos">+209 bps</td></tr><tr><td>AOV</td><td>$28.04</td><td>$27.51</td><td class="delta-pos">+1.9%</td></tr><tr><td>ROAS</td><td>1.89</td><td>1.20</td><td class="delta-pos">+57.7%</td></tr><tr><td>Spend</td><td>$488.8K</td><td>$429.2K</td><td class="delta-pos">+13.9%</td></tr></tbody></table>
+<p class="meta-line"><strong>Anomaly score:</strong> +32.9pp vs 12-week median of 76.7% (threshold 15.8pp; <strong>anomalous</strong>). <strong>Trend:</strong> ↑ step-change. <strong>Seasonal:</strong> Above seasonal norms (+48% ±34%).</p>
+<p><strong>Explanation:</strong> GMS surged +109.6% Y/Y on visits +36%, AOV +1.9%, and CVR +51% (4.09% → 6.19%). The CVR component is the dominant driver. No specific experiment or campaign launch surfaced in Slack/Glean for this week. A mid-April 2026 multiplier deployment was confirmed by Eurie Kim in #performance_social ("the new multipliers would backdate for all dates"), which is a candidate mechanism: Display GMS is augmented by latency multipliers, and a model recalibration could re-state recent values while leaving last-year baselines intact.</p>
+<p>The combination of unusual CVR lift, modest AOV change, and absent campaign-level evidence is consistent with a methodology-driven shift rather than an organic conversion improvement. The 26-week trend is itself +77% (Display has been consistently elevated), so the current week is an extension of an existing pattern — but the +33pp anomaly above that elevated baseline is what flags this for investigation.</p>
+<div class="callout callout-warn"><strong>Confidence floor:</strong> <code>Unexplained</code> until a Slack/Glean source confirms either a multiplier change applied to Display specifically, or a campaign event from the Display team. Recommend: post in #olive_garden_analytics or #performance_analytics_ac_team asking whether Display's GMS multipliers were updated in April–May 2026.</div>
+</details><details class="channel-detail" open>
+<summary><span class="channel-name">Affiliates</span> <span class="tier-badge tier-2">Tier 2</span> <span class="delta-tag">+$417.4K · +20.3%</span> <span class="conf-badge conf-likely">Likely explained</span></summary>
+<table class="channel-metrics"><thead><tr><th>Metric</th><th>Current (7d)</th><th>Prior Year (7d)</th><th>YoY Change</th></tr></thead><tbody><tr><td>GMS</td><td>$2.48M</td><td>$2.06M</td><td class="delta-pos">+20.3%</td></tr><tr><td>Visits</td><td>1,009,081</td><td>890,051</td><td class="delta-pos">+13.4%</td></tr><tr><td>Receipts</td><td>70,979</td><td>70,077</td><td class="delta-pos">+1.3%</td></tr><tr><td>CVR</td><td>7.03%</td><td>7.87%</td><td class="delta-neg">−84 bps</td></tr><tr><td>AOV</td><td>$34.89</td><td>$29.38</td><td class="delta-pos">+18.7%</td></tr><tr><td>ROAS</td><td>2.61</td><td>2.78</td><td class="delta-neg">−6.1%</td></tr><tr><td>Spend</td><td>$228.0K</td><td>$174.5K</td><td class="delta-pos">+30.6%</td></tr></tbody></table>
+<p class="meta-line"><strong>Anomaly score:</strong> -7.9pp vs 12-week median of 28.1% (threshold 6.8pp; <strong>anomalous</strong>). <strong>Trend:</strong> ↓ step-change. <strong>Seasonal:</strong> Within seasonal norms (+3% ±24%).</p>
+<p><strong>Explanation:</strong> GMS +20.3% with visits +13.4%, CVR −10.7% (7.87% → 7.03%), AOV +18.7% ($29.38 → $34.89). Costs are up +30.6% Y/Y (LY $175K → $228K), but the team has been migrating Affiliates infrastructure from Awin to Rakuten throughout April–May 2026. Two confirmed methodology changes are active:</p>
+<ol><li>Cookie window reduced from <strong>30 days to 7 days</strong> across all affiliate networks (ShopMy, LTK, Rakuten, including the legacy Awin tail)</li>
+<li>LTK commission reduced from <strong>10% → 8%</strong></li></ol>
+<p>Both changes shorten the attribution window and reduce per-publisher cost, which is consistent with the AOV lift (purchases tracked are likelier to be high-intent, last-touch driven) and the CVR drop (some legitimate conversions no longer attribute to Affiliates).</p>
+<p>Tamika Normil flagged in #rakuten-migration (2026-05-08) that BOE sales are declining 40–50% — steeper than the original 20–35% expectation — and recommended waiting 14–30 days before drawing firm conclusions because Awin has notable latent GMS. The +1.03x TEDDA missing-sales correction continues to apply, but the active migration is the dominant story this week.</p>
+</details><details class="channel-detail" open>
+<summary><span class="channel-name">SEM - Brand</span> <span class="tier-badge tier-2">Tier 2</span> <span class="delta-tag">−$181.2K · −18.6%</span> <span class="conf-badge conf-likely">Likely explained</span></summary>
+<table class="channel-metrics"><thead><tr><th>Metric</th><th>Current (7d)</th><th>Prior Year (7d)</th><th>YoY Change</th></tr></thead><tbody><tr><td>GMS</td><td>$791.2K</td><td>$972.3K</td><td class="delta-neg">−18.6%</td></tr><tr><td>Visits</td><td>2,452,142</td><td>3,251,927</td><td class="delta-neg">−24.6%</td></tr><tr><td>Receipts</td><td>29,083</td><td>38,462</td><td class="delta-neg">−24.4%</td></tr><tr><td>CVR</td><td>1.19%</td><td>1.18%</td><td class="delta-pos">+0 bps</td></tr><tr><td>AOV</td><td>$27.20</td><td>$25.28</td><td class="delta-pos">+7.6%</td></tr><tr><td>ROAS</td><td>8.51</td><td>1.81</td><td class="delta-pos">+370.2%</td></tr><tr><td>Spend</td><td>$29.4K</td><td>$178.8K</td><td class="delta-neg">−83.6%</td></tr></tbody></table>
+<p class="meta-line"><strong>Anomaly score:</strong> +5.7pp vs 12-week median of -24.3% (threshold 5.0pp; <strong>anomalous</strong>). <strong>Trend:</strong> ↓ consistent. <strong>Seasonal:</strong> Within seasonal norms (-20% ±10%).</p>
+<p><strong>Explanation:</strong> GMS −18.6% on visits −24.6%, CVR roughly flat (+0.3%), AOV +7.6%, and spend collapsed <strong>−83.5%</strong> (LY $179K → $29K). ROAS jumped from 1.81 to 8.51, a typical efficiency signature of pulling back paid branded spend in a market where organic intent already exists — Etsy is recapturing the same branded traffic at near-zero cost through organic channels rather than paying for the click.</p>
+<p>No SEM-Brand-specific experiment was found in the active registry, but the wider Q1 2026 lower-funnel budget cut (~$9M Y/Y, per Gabe Trumbo's note to auditors in #marketing-accounting on 2026-04-28) provides the directional context. The 12-week median Y/Y is −24.3% — this week's −18.6% is actually a slight improvement on trend (anomaly score +5.65pp), consistent with the budget pull-back having reached steady state. No data-quality concern.</p>
+</details>
+<h3>Brief channels</h3>
+<ul class="brief-list">
+<li><strong>PLA:</strong> GMS up 21.5% on visits +32.3%. Active DE CSS experiment <code>de_css_pla_q1_2026</code> overlaps this week but has no iroi readout yet. 26-week trend is consistently positive. <span class="conf-badge conf-likely">Likely explained</span></li><li><strong>SEM - Non-Brand:</strong> GMS +25.8% on visits +14.7% and AOV +8.5%; CVR roughly flat. Trend is flat-to-positive across 26 weeks. Spend efficiency improved (ROAS 1.83 vs 1.39). No specific Slack/Glean event identified. <span class="conf-badge conf-unexplained">Unexplained</span></li><li><strong>Paid Social:</strong> GMS +38.0% (+$1.59M) <strong>despite visits −62.7%</strong> — Meta budget cut ~$9M Y/Y in Q1 2026 per #marketing-accounting (lower-incrementality finding). Spend down 53%, ROAS up 90% — efficiency gain. TikTok MF/LF cannibalization investigation underway. Blended row, decomposition not run. <span class="conf-badge conf-likely">Likely explained</span></li><li><strong>Seo:</strong> GMS +5.0% on visits +3.0% and AOV +8.7%. Non-paid channel, no spend/ROAS. Trend is consistently slightly positive. Within seasonal norms. <span class="conf-badge conf-likely">Likely explained</span></li><li><strong>Social Creator Co:</strong> GMS +34% on visits +90% with spend roughly flat (−3.5%). Tier 3 — GMS follows visits by construction in the TikTok component; Meta component uses $4 GMS/$. Trend is decelerating (12-week median +44%). <span class="conf-badge conf-likely">Likely explained</span></li><li><strong>Video:</strong> GMS −14.7% with spend −36.8% (cost cut). Tier 3 — GMS = spend × static multiplier, so the decline mostly tracks the spend cut. Visits +216% is upper-funnel engagement, not a GMS driver. <span class="conf-badge conf-likely">Likely explained</span></li><li><strong>App:</strong> GMS −7.6% with spend −7.6%. Visits=0 by construction. Tier 3 expected — movement matches spend movement. App installs −1.1% Y/Y this period. <span class="conf-badge conf-expected">Expected by construction</span></li>
+</ul>
+</section>
 
-  <!-- Full Channel Breakdown -->
-  <div class="card" id="metric-movements-by-channel">
-    <h2>Metric Movements by Channel</h2>
-    <p style="font-size:0.82em;color:#888;margin-bottom:16px">Materiality: deep if |GMS delta| &gt; $50K OR |GMS YoY%| &gt; 15% OR top-3 channel by volume. Click header to expand/collapse.</p>
+<section>
+<h2>Total Growth Marketing Summary</h2>
+<table class="compact">
+<thead><tr><th>Metric</th><th>Current (7d)</th><th>Prior Year (7d)</th><th>YoY Change</th></tr></thead>
+<tbody>
+<tr><td>Total GMS</td><td>$77.76M</td><td>$64.84M</td><td class="delta-pos">+19.9%</td></tr>
+<tr><td>Total Receipts</td><td>2,388,614</td><td>2,185,473</td><td class="delta-pos">+9.3%</td></tr>
+<tr><td>New Buyer Receipts</td><td>226,273</td><td>215,059</td><td class="delta-pos">+5.2%</td></tr>
+<tr><td>Lapsed Buyer Receipts</td><td>303,075</td><td>264,360</td><td class="delta-pos">+14.6%</td></tr>
+<tr><td>Existing Buyer Receipts</td><td>1,719,632</td><td>1,564,614</td><td class="delta-pos">+9.9%</td></tr>
+<tr><td>App Installs (28d)</td><td>2,244,733</td><td>2,270,103</td><td class="delta-neg">−1.1%</td></tr>
+</tbody>
+</table>
+</section>
 
-    <!-- ===== PLA ===== -->
-    <div class="channel-section">
-      <div class="channel-header" onclick="toggleChannel('pla')">
-        <h3>PLA <span class="tier-tag" style="margin-left:8px">MTA-Full (T1)</span></h3>
-        <div class="ch-meta">
-          <span class="pos">+$5,413,336</span>
-          <span class="pos">+18.6% YoY</span>
-          <span class="badge badge-likely">Likely explained</span>
-          <span style="font-size:0.8em;color:#888">Trend: Rising</span>
-          <span class="toggle-icon" id="pla-icon">&#9660;</span>
-        </div>
-      </div>
-      <div class="channel-body open" id="pla-body">
-        <div class="metrics-table">
-          <table>
-            <thead><tr><th>Metric</th><th>Current (7d)</th><th>Prior Year (7d)</th><th>YoY Change</th></tr></thead>
-            <tbody>
-              <tr><td>GMS</td><td>$34,452,358</td><td>$29,039,022</td><td class="pos">+18.6%</td></tr>
-              <tr><td>Visits</td><td>45,997,054</td><td>35,540,088</td><td class="pos">+29.4%</td></tr>
-              <tr><td>CVR</td><td>2.22%</td><td>2.66%</td><td class="neg">−44 bps (−16.6%)</td></tr>
-              <tr><td>AOV</td><td>$33.69</td><td>$30.67</td><td class="pos">+9.8%</td></tr>
-              <tr><td>Cost</td><td>$6,467,268</td><td>$5,913,268</td><td class="pos">+9.4%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="expl-text">
-          <p><strong>Decomposition check (Tier 1 — valid):</strong></p>
-          <div class="decomp-row">
-            <span class="decomp-factor">Visits ×1.294</span><span class="decomp-eq">×</span>
-            <span class="decomp-factor">CVR ×0.834</span><span class="decomp-eq">×</span>
-            <span class="decomp-factor">AOV ×1.098</span><span class="decomp-eq">−1 =</span>
-            <span class="decomp-factor" style="background:#e8f5e9;border-color:#4caf50;color:#2e7d32">Expected +18.5%</span>
-            <span class="decomp-eq">vs Actual +18.6%</span>
-            <span style="color:var(--sage);font-weight:600">✓ Consistent (&lt;1% gap)</span>
-          </div>
-          <p style="margin-top:10px">PLA is the #1 absolute GMS contributor at +$5.4M (+18.6% YoY). The primary driver is <strong>visit expansion (+29.4%)</strong>, partially offset by CVR compression (−44 bps), consistent with broader query coverage from the same spend envelope. AOV growth of +9.8% ($33.69 vs $30.67 LY) provides a secondary tailwind. Spend grew +9.4% to $6.47M — well below GMS growth of +18.6%, indicating genuine GMS-per-dollar efficiency improvement.</p>
-          <p>Business context (Glean): PLA growth continues to be supported by structural tailwinds — Browsier ELP product change (Oct 2025), Global Blocklist improvements (Nov 2025), and reduced competitive pressure from Amazon's scaled-back PLA presence. A US PLA Incrementality Test (Vishwa Bhuta, Apr 2026) returned a positive ROAS finding, supporting the +9.4% spend increase. BQ registry unavailable this run — the incrementality test cannot be cross-referenced directly.</p>
-          <p><strong>26-week trend:</strong> Rising. Prior week +22.5% YoY; this week +18.6%. Growth rate stabilized slightly but remains strong.</p>
-        </div>
-        <div class="next-step-box"><strong>Next Step:</strong> Verify with PLA channel owner whether the +29.4% visit increase reflects the bid strategy ramp or Browsier ELP; confirm whether the US incrementality test results warrant further spend allocation for the next budget cycle.</div>
-        <div class="confidence-note"><em>Confidence: Likely explained — decomposition consistent; named product changes and documented incrementality test win in Glean. BQ prerequisite caps at Likely explained.</em></div>
-      </div>
-    </div>
+<section>
+<h2>Active Experiments (Review Period)</h2>
+<table class="compact">
+<thead><tr><th>Experiment</th><th>Channel</th><th>Start</th><th>Tactic</th><th>IROI</th><th>CI Range</th></tr></thead>
+<tbody>
+<tr><td>de_css_pla_q1_2026</td><td>PLA (DE)</td><td>2026-05-03</td><td>CSS</td><td><em>(no readout)</em></td><td>—</td></tr>
+</tbody>
+</table>
+<p style="font-size:13px;color:var(--muted);margin-top:8px"><em>The only experiment overlapping this review window is <code>de_css_pla_q1_2026</code> (PLA, Germany), started 2026-05-03. No <code>iroi_exp</code> readout is available yet. PLA Germany GMS is included in the broader PLA aggregate but cannot be isolated from this dashboard.</em></p>
+</section>
 
-    <!-- ===== SEO ===== -->
-    <div class="channel-section">
-      <div class="channel-header" onclick="toggleChannel('seo')">
-        <h3>SEO <span class="tier-tag" style="margin-left:8px">MTA-Full (T1)</span></h3>
-        <div class="ch-meta">
-          <span class="pos">+$93,734</span>
-          <span class="neutral">+0.5% YoY</span>
-          <span class="badge badge-likely">Likely explained</span>
-          <span style="font-size:0.8em;color:#888">Trend: Flat</span>
-          <span class="toggle-icon" id="seo-icon">&#9660;</span>
-        </div>
-      </div>
-      <div class="channel-body open" id="seo-body">
-        <div class="metrics-table">
-          <table>
-            <thead><tr><th>Metric</th><th>Current (7d)</th><th>Prior Year (7d)</th><th>YoY Change</th></tr></thead>
-            <tbody>
-              <tr><td>GMS</td><td>$18,069,698</td><td>$17,975,964</td><td class="neutral">+0.5%</td></tr>
-              <tr><td>Visits</td><td>23,602,135</td><td>21,726,355</td><td class="pos">+8.6% (+1.876M)</td></tr>
-              <tr><td>CVR</td><td>2.36%</td><td>2.71%</td><td class="neg">−35 bps (−13.0%)</td></tr>
-              <tr><td>AOV</td><td>$32.50</td><td>$30.55</td><td class="pos">+6.4%</td></tr>
-              <tr><td>Cost</td><td>$0</td><td>$0</td><td class="neutral">N/A (organic)</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="expl-text">
-          <p><strong>Decomposition check (Tier 1 — valid):</strong></p>
-          <div class="decomp-row">
-            <span class="decomp-factor">Visits ×1.086</span><span class="decomp-eq">×</span>
-            <span class="decomp-factor">CVR ×0.870</span><span class="decomp-eq">×</span>
-            <span class="decomp-factor">AOV ×1.064</span><span class="decomp-eq">−1 =</span>
-            <span class="decomp-factor" style="background:#e8f5e9;border-color:#4caf50;color:#2e7d32">Expected +0.5%</span>
-            <span class="decomp-eq">vs Actual +0.5%</span>
-            <span style="color:var(--sage);font-weight:600">✓ Consistent (&lt;1% gap)</span>
-          </div>
-          <p style="margin-top:10px">SEO is the #2 channel by GMS volume ($18.1M) but grew only +0.5% YoY — flat in practice. Visits grew +8.6% (+1.88M incremental visits) while CVR fell −35 bps (−13.0%), nearly canceling the traffic gain at the GMS level. AOV growth of +6.4% provides a small lift.</p>
-          <blockquote class="warn" style="margin-top:8px">
-            <strong>⚠ Bot visits confirmed in market pages (Dannie's Slack, May 4, 2026).</strong> Bot traffic directly explains the visits/CVR divergence: bot sessions inflate the visit count without generating real receipts, compressing the measured CVR. As a rough bound: if even 5–8% of the +1.88M incremental visits are bots (~100–150K visits), the true CVR for real visitors would be ~2.5–2.6% rather than 2.36% — a substantially cleaner picture. <strong>The true underlying SEO GMS trajectory may be meaningfully better than +0.5%.</strong> For the #2 volume channel, this is an Immediate-priority data quality issue.
-          </blockquote>
-          <p><strong>SEO cannibalization — team flag (Slack, May 4):</strong> Smaran Margad raised "we have seo cannibalization right?" in today's review meeting, with Paul Scheetz agreeing. SEO cannibalization means that PLA and SEM growth is capturing query volume that previously drove organic SEO visits — i.e., Etsy's own paid ads are outcompeting Etsy's organic listings for the same buyer intent signals. If PLA visits grew +29.4% YoY by capturing more queries in the same keyword space as SEO, some of that PLA visit growth came at the expense of SEO visit growth. This is a structural headwind for SEO that cannot be resolved without a channel-level attribution audit. It adds a second explanation (alongside bot visits) for why SEO visits (+8.6%) are underperforming and GMS is flat despite overall platform growth of +10.7%.</p>
-          <p><strong>26-week trend:</strong> Flat. Consistent with prior week. SEO faces two confirmed headwinds this week: bot visit contamination and internal cannibalization from PLA/SEM growth.</p>
-        </div>
-        <div class="next-step-box"><strong>Next Step:</strong> (1) Escalate bot visit investigation to Smaran Margad / SEO data team — quantify bot share of the +1.88M incremental visits. (2) Confirm the cannibalization question raised in Slack: pull a query-overlap analysis between PLA/SEM and SEO for the current period to quantify the cannibalization effect on SEO visits. Both are Immediate priority given SEO's #2 volume position.</div>
-        <div class="confidence-note"><em>Confidence: Likely explained — bot visit contamination (confirmed Dannie's Slack, May 4) provides a direct causal mechanism for CVR compression. True CVR and GMS unknown until bots are filtered.</em></div>
-      </div>
-    </div>
+<section class="flags-section">
+<h2>Flags for Manual Review</h2>
 
-    <!-- ===== SEM Non-Brand — UNEXPLAINED ===== -->
-    <div class="channel-section">
-      <div class="channel-header" onclick="toggleChannel('semNB')">
-        <h3>SEM Non-Brand <span class="tier-tag" style="margin-left:8px">MTA-Full (T1)</span></h3>
-        <div class="ch-meta">
-          <span class="pos">+$2,142,091</span>
-          <span class="pos">+22.3% YoY</span>
-          <span class="badge badge-unexplained">Unexplained</span>
-          <span style="font-size:0.8em;color:#888">Trend: Rising</span>
-          <span class="toggle-icon" id="semNB-icon">&#9660;</span>
-        </div>
-      </div>
-      <div class="channel-body open" id="semNB-body">
-        <div class="metrics-table">
-          <table>
-            <thead><tr><th>Metric</th><th>Current (7d)</th><th>Prior Year (7d)</th><th>YoY Change</th></tr></thead>
-            <tbody>
-              <tr><td>GMS</td><td>$11,733,371</td><td>$9,591,280</td><td class="pos">+22.3%</td></tr>
-              <tr><td>Visits</td><td>5,434,693</td><td>4,420,993</td><td class="pos">+22.9%</td></tr>
-              <tr><td>CVR</td><td>5.23%</td><td>5.62%</td><td class="neg">−39 bps (−6.9%)</td></tr>
-              <tr><td>AOV</td><td>$36.20</td><td>$32.60</td><td class="pos">+11.0%</td></tr>
-              <tr><td>Cost</td><td>$2,232,262</td><td>$2,232,481</td><td class="neutral">~0.0%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="inconsistency-banner">
-          ⚠ <strong>Decomposition inconsistency — analysis stopped at this point. Channel is Unexplained.</strong><br><br>
-          Expected GMS YoY: (1+22.9%)(1−6.9%)(1+11.0%) − 1 = (1.229)(0.931)(1.110) − 1 = <strong>+27.0%</strong>. Actual: <strong>+22.3%</strong>.<br>
-          Gap: |27.0 − 22.3| / |22.3| = <strong>21.1%</strong> — exceeds the 20% inconsistency threshold.<br><br>
-          Per the reasoning framework: "A gap ≥ 20% means the data itself is unreliable for this channel this week. Do not write a causal explanation." No driver is declared. Candidate mechanisms (bid strategy changes Apr 13/16, Vintage KW test launched Apr 29) are listed below as investigative hypotheses only — they are <strong>not confirmed explanations</strong>.
-        </div>
-        <div class="expl-text">
-          <p><strong>Metrics summary (facts only — no causal interpretation):</strong> GMS was $11.73M vs $9.59M LY (+22.3%). Visits were 5.43M vs 4.42M LY (+22.9%). CVR was 5.23% vs 5.62% LY (−39 bps). AOV was $36.20 vs $32.60 LY (+11.0%). Cost was essentially flat ($2.23M vs $2.23M LY, ~0% change).</p>
-          <p><strong>Candidate mechanisms for investigation (unconfirmed):</strong> (1) <em>Bid strategy adjustments:</em> INT ROI target raised to $1.8 on Apr 13 and Apr 16 — a tighter ROI floor changes the traffic mix in ways that may produce non-multiplicative GMS effects and could explain part of the AOV shift. (2) <em>Vintage KW test (launched Apr 29):</em> Performance Event Tracker lists this test as neutral/unknown impact; it may be altering keyword mix in ways that affect AOV composition. Neither mechanism can be evaluated as a confirmed cause without BQ experiment data and a valid Layer 1 decomposition basis. Cost is flat, which is itself notable — if cost is unchanged and GMS is up +22.3%, GMS-per-dollar efficiency has substantially improved, but this finding cannot be trusted until the decomposition inconsistency is resolved.</p>
-          <p><strong>26-week trend:</strong> Rising (prior run label). Prior week: +22.1% YoY.</p>
-        </div>
-        <div class="next-step-box"><strong>Next Step:</strong> Bring to SEM team for investigation: does the Vintage KW test (launched Apr 29) or the Apr 13/16 bid adjustments explain a keyword-mix shift that breaks the GMS = Visits × CVR × AOV identity? Request BQ experiment registry pull for this channel specifically. Do not use this week's SEM NB GMS figure for channel-level budget decisions until the inconsistency is resolved.</div>
-        <div class="confidence-note"><em>Confidence: Unexplained — decomposition inconsistent (gap 21.1%); framework requires analysis to stop before causal reasoning. BQ unavailability compounds this; resolution requires both decomposition re-validation and experiment registry lookup. This channel's GMS improvement is real but its cause is not established.</em></div>
-      </div>
-    </div>
+<div class="flag-block">
+<h3 style="margin-top:0">🔴 Immediate Action</h3>
+<ul>
+<li><strong>Display +109.6% Y/Y is currently <code>Unexplained</code>.</strong> Recommend posting in <code>#olive_garden_analytics</code> or <code>#performance_analytics_ac_team</code> asking whether Display GMS multipliers were updated in April–May 2026 (cf. Eurie Kim's note about backdated 2025 values). The +33pp anomaly score above the 12-week median is the single largest unexplained movement this week. <strong>Deadline:</strong> confirm by next Tuesday or escalate to a methodology review with the Buyer Attribution team.</li>
+<li><strong><code>de_css_pla_q1_2026</code> iroi readout pending.</strong> Re-run Step 3A weekly until <code>iroi_exp</code> becomes available; will upgrade PLA confidence from <code>Likely explained</code> → <code>Explained</code> if direction matches and CI &lt; 0.5.</li>
+</ul>
+</div>
 
-    <!-- ===== Paid Social ===== -->
-    <div class="channel-section">
-      <div class="channel-header" onclick="toggleChannel('paidSocial')">
-        <h3>Paid Social <span class="tier-tag" style="margin-left:8px">Blended T1/T3 (Pattern H)</span></h3>
-        <div class="ch-meta">
-          <span class="pos">+$2,257,655</span>
-          <span class="pos">+50.9% YoY</span>
-          <span class="badge badge-likely">Likely explained</span>
-          <span style="font-size:0.8em;color:#888">Trend: Rising</span>
-          <span class="toggle-icon" id="paidSocial-icon">&#9660;</span>
-        </div>
-      </div>
-      <div class="channel-body open" id="paidSocial-body">
-        <div class="metrics-table">
-          <table>
-            <thead><tr><th>Metric</th><th>Current (7d)</th><th>Prior Year (7d)</th><th>YoY Change</th></tr></thead>
-            <tbody>
-              <tr><td>GMS</td><td>$6,697,400</td><td>$4,439,745</td><td class="pos">+50.9%</td></tr>
-              <tr><td>Visits ⚠</td><td>5,316,054</td><td>12,986,212</td><td class="neg">−59.1% [methodology-driven, see below]</td></tr>
-              <tr><td>CVR ⚠</td><td>3.85%</td><td>1.26%</td><td class="pos">+204.8% [artifact — do not interpret]</td></tr>
-              <tr><td>AOV ⚠</td><td>$32.75</td><td>$27.06</td><td class="pos">+21.0% [treat with caution — T1/T3 blend]</td></tr>
-              <tr><td>Cost</td><td>$735,411</td><td>$1,373,313</td><td class="neg">−46.5%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <blockquote class="warn">
-          <strong>⚠ Critical interpretation note: The +50.9% GMS figure does NOT represent an organic demand improvement. Do not use it for channel performance assessment or budget decisions until the team confirms the multiplier change.</strong><br><br>
-          Paid Social is a blended T1/T3 channel. The T3 component uses a static ROI multiplier to derive GMS from spend. If the LY multiplier was deflated in 2026 (i.e., the LY denominator was restated downward), current-year GMS appears higher relative to a now-lower baseline — producing apparent YoY growth without any real demand change. Dannie's Slack (May 4, 2026) asks: "for paid social, is this still because of the multiplier change? (ie. we deflated LY's multiplier)?" — team confirmation is pending.<br><br>
-          <strong>Pattern H (blended divergence) confirmed:</strong> Visits −59.1% while GMS +50.9% is the defining signature. CVR of +204.8% formally triggers the Gate 3 plausibility flag for Tier 2 channels (threshold: CVR YoY &gt; +200%). CVR is treated as an artifact here — do not report as a buyer behavior signal.
-        </blockquote>
-        <div class="expl-text">
-          <p><strong>What the metrics actually show:</strong> Current spend ($735K) is −46.5% below LY ($1.37M). For a spend-proportional channel, this should correlate with a GMS decline, not a +50.9% GMS increase. The paradox resolves under the LY multiplier deflation hypothesis: if LY GMS was calculated using a higher (now-corrected) multiplier, the LY base is comparatively inflated, making current-year GMS appear stronger in YoY comparison. The GMS is not higher — the YoY baseline was restated lower.</p>
-          <p>Note: the −46.5% spend reduction may itself be intentional. 2026 Paid Social Test Readouts (Glean) recommend multiplier decreases across tactics, consistent with the team's ongoing reassessment of social attribution weights. Whether the spend cut was a deliberate efficiency decision or a response to the multiplier recalibration should be confirmed with the Paid Social team.</p>
-          <p><strong>Additional context — TikTok relaunch:</strong> During today's review meeting (Slack, May 4), the team attributed a large visit swing in the Paid Social chart to the TikTok campaign relaunch. Crystal Zhong noted that "TikTok is about the same size as Meta" within Paid Social — meaning TikTok's on/off status has approximately equal impact on visit attribution as Meta does. If TikTok was running at different scale LY vs. this year, this would independently contribute to the −59.1% visits YoY divergence, on top of the multiplier change. The visit swing may reflect both: (1) LY multiplier inflating LY visits, and (2) TikTok operating at materially different scale vs. LY. Confirmation of TikTok campaign status (paused in LY? relaunched when?) is needed to fully decompose the visit movement.</p>
-          <p><strong>26-week trend:</strong> Rising (prior run label — interpret cautiously given methodology questions).</p>
-        </div>
-        <div class="next-step-box"><strong>Next Step:</strong> Confirm with Paid Social channel team: (1) Was the LY multiplier deflated, and if so, what is the exact date and magnitude of the change? (2) What was TikTok's campaign status LY vs. now — when was it relaunched, and what scale is it running at vs. LY? (Crystal Zhong notes TikTok ≈ Meta in size, so scale differences have a large impact on visit attribution.) (3) Was the −46.5% spend reduction intentional? Until (1) and (2) are confirmed, Paid Social GMS and visits should not be used for performance reporting or budget allocation decisions.</div>
-        <div class="confidence-note"><em>Confidence: Likely explained — LY multiplier deflation is the named mechanism, corroborated by Dannie's Slack today. Gate 3 CVR flag (+204.8% > +200% threshold) formally applied. Team confirmation required.</em></div>
-      </div>
-    </div>
+<div class="flag-block monitor">
+<h3 style="margin-top:0">🟡 Monitor</h3>
+<ul>
+<li><strong>SEM Non-Brand <code>Unexplained</code> (+25.8%)</strong> despite no specific Slack/Glean signal. Visits +14.7%, AOV +8.5%, ROAS 1.83 (LY 1.39). Trend is flat-to-positive on 12-week median. Watch for incrementality study results that could explain the efficiency improvement; otherwise no immediate action.</li>
+<li><strong>Affiliates Rakuten migration tail.</strong> Tamika Normil flagged that BOE sales decline (40–50%) is steeper than the original 20–35% expectation. Wait 14–30 days for Awin latent attribution to close before drawing firm performance conclusions. Leading indicator: weekly Affiliates visits + spend tracked in <code>#rakuten-migration</code>.</li>
+<li><strong>Paid Social — TikTok MF/LF cannibalization investigation</strong> ongoing per Mengning Zhao (<code>#brand-marketing-analytics</code> 2026-05-06). Actualized ROI sub-$1 since mid-March; LF spend ramped. Maintain <code>Likely explained</code> until cannibalization vs. multiplier-drift hypotheses are resolved.</li>
+</ul>
+</div>
 
-    <!-- ===== Display ===== -->
-    <div class="channel-section">
-      <div class="channel-header" onclick="toggleChannel('display')">
-        <h3>Display <span class="tier-tag" style="margin-left:8px">MTA-Full (T1)</span></h3>
-        <div class="ch-meta">
-          <span class="pos">+$2,290,574</span>
-          <span class="pos">+95.5% YoY</span>
-          <span class="badge badge-likely">Likely explained</span>
-          <span style="font-size:0.8em;color:#888">Trend: Rising (step-change)</span>
-          <span class="toggle-icon" id="display-icon">&#9660;</span>
-        </div>
-      </div>
-      <div class="channel-body open" id="display-body">
-        <div class="metrics-table">
-          <table>
-            <thead><tr><th>Metric</th><th>Current (7d)</th><th>Prior Year (7d)</th><th>YoY Change</th></tr></thead>
-            <tbody>
-              <tr><td>GMS</td><td>$4,688,824</td><td>$2,398,250</td><td class="pos">+95.5%</td></tr>
-              <tr><td>Visits</td><td>2,575,169</td><td>2,000,564</td><td class="pos">+28.7%</td></tr>
-              <tr><td>CVR</td><td>6.48%</td><td>4.39%</td><td class="pos">+209 bps (+47.5%)</td></tr>
-              <tr><td>AOV</td><td>$28.11</td><td>$27.28</td><td class="pos">+3.0%</td></tr>
-              <tr><td>Cost</td><td>$463,169</td><td>$401,260</td><td class="pos">+15.4%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="expl-text">
-          <p><strong>Decomposition check (Tier 1 — valid):</strong></p>
-          <div class="decomp-row">
-            <span class="decomp-factor">Visits ×1.287</span><span class="decomp-eq">×</span>
-            <span class="decomp-factor">CVR ×1.475</span><span class="decomp-eq">×</span>
-            <span class="decomp-factor">AOV ×1.030</span><span class="decomp-eq">−1 =</span>
-            <span class="decomp-factor" style="background:#e8f5e9;border-color:#4caf50;color:#2e7d32">Expected +95.5%</span>
-            <span class="decomp-eq">vs Actual +95.5%</span>
-            <span style="color:var(--sage);font-weight:600">✓ Consistent (&lt;1% gap)</span>
-            <span style="color:#888;font-style:italic;font-size:0.9em">(passes — but this is consistent with the re-attribution hypothesis, not with real demand improvement; see interpretation below)</span>
-          </div>
-          <p style="margin-top:10px"><strong>Primary driver (dominant): Feb 9 referrer reclassification (ongoing structural re-attribution).</strong> A referrer update on Feb 9 has been reclassifying visits previously attributed to Dark/Internal traffic as Display — this has inflated Display visit counts since mid-February. Prior week: +64.3% YoY. This week: +95.5% YoY. The acceleration is consistent with the structural re-attribution as the dominant ongoing factor. This is not a Display demand improvement — it is a reclassification event that suppresses the LY baseline while inflating the current period. The decomposition closing at +95.5% is consistent with this hypothesis: re-attributed visits carry the historical conversion rate of the traffic that was already converting (just not being attributed to Display), so CVR appears elevated vs. the un-reclassified LY baseline.</p>
-          <p><strong>Secondary factor (monitoring): Incrementality test ended today (May 4).</strong> Dannie's Slack confirms: "incrementality test ended for display!" Next week's reading will be the first post-test observation and will help separate any test-related measurement effect from the structural re-attribution impact. The test ending itself does not explain the current-week +95.5% — its contribution will become visible in the next-week comparison.</p>
-          <p>Spend grew +15.4% ($463K vs $401K LY), which is modest relative to the GMS jump — consistent with the GMS figure being inflated by re-attribution rather than reflecting real efficiency gains requiring more spend.</p>
-          <p><strong>26-week trend:</strong> Rising (step-change). Display has been accelerating since the Feb 9 referrer update. The step-change is structural, not demand-driven.</p>
-        </div>
-        <div class="next-step-box"><strong>Next Step:</strong> Request quantification of the Feb 9 referrer reclassification impact from the Display/Attribution team — specifically, the volume of visits re-attributed from Dark/Internal to Display since Feb 9. This is needed to establish Display's baseline performance excluding the reclassification effect. Also monitor next week's Display YoY to assess whether the trajectory changes post-incrementality test.</div>
-        <div class="confidence-note"><em>Confidence: Likely explained — Feb 9 referrer re-attribution is the primary named structural mechanism; the decomposition closing is consistent with the re-attribution hypothesis (not with real demand improvement). Incrementality test end is secondary context for next-week monitoring. BQ cap applies.</em></div>
-      </div>
-    </div>
+<div class="flag-block housekeeping">
+<h3 style="margin-top:0">⚪ Housekeeping</h3>
+<ul>
+<li><strong><code>Other Paid</code> is absent from CQ-01</strong> this run — only 10 channels returned. Per skill spec, omitted from Pass 1/2/3 rather than placeholder row. Confirm with Eurie Kim whether the channel was retired or temporarily reclassified.</li>
+<li><strong>Mid-April multiplier launch</strong> (Eurie Kim, 2026-04-14) should be cross-referenced against this week's Tier 1 channel readings — Display, PLA, SEM-NB all showed positive movements. Worth confirming whether all three were affected by the same recalibration.</li>
+<li><strong>App <code>total_installs</code> is monthly, not weekly</strong> — App row uses last-month aggregate vs same period LY. Direct comparability to channel-level 7-day windows is approximate.</li>
+</ul>
+</div>
+</section>
 
-    <!-- ===== Affiliates ===== -->
-    <div class="channel-section">
-      <div class="channel-header" onclick="toggleChannel('affiliates')">
-        <h3>Affiliates <span class="tier-tag" style="margin-left:8px">Mixed (T2)</span></h3>
-        <div class="ch-meta">
-          <span class="pos">+$519,863</span>
-          <span class="pos">+25.7% YoY</span>
-          <span class="badge badge-likely">Likely explained</span>
-          <span style="font-size:0.8em;color:#888">Trend: Rising</span>
-          <span class="toggle-icon" id="affiliates-icon">&#9660;</span>
-        </div>
-      </div>
-      <div class="channel-body open" id="affiliates-body">
-        <div class="metrics-table">
-          <table>
-            <thead><tr><th>Metric</th><th>Current (7d)</th><th>Prior Year (7d)</th><th>YoY Change</th></tr></thead>
-            <tbody>
-              <tr><td>GMS</td><td>$2,539,533</td><td>$2,019,670</td><td class="pos">+25.7%</td></tr>
-              <tr><td>Visits</td><td>987,309</td><td>820,227</td><td class="pos">+20.4%</td></tr>
-              <tr><td>CVR</td><td>7.41%</td><td>7.68%</td><td class="neg">−27 bps (−3.5%)</td></tr>
-              <tr><td>AOV</td><td>$34.71</td><td>$32.05</td><td class="pos">+8.3%</td></tr>
-              <tr><td>Cost</td><td>$252,783</td><td>$205,492</td><td class="pos">+23.0%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="expl-text">
-          <p><strong>Decomposition check (Tier 2 — valid with caveats):</strong></p>
-          <div class="decomp-row">
-            <span class="decomp-factor">Visits ×1.204</span><span class="decomp-eq">×</span>
-            <span class="decomp-factor">CVR ×0.965</span><span class="decomp-eq">×</span>
-            <span class="decomp-factor">AOV ×1.083</span><span class="decomp-eq">−1 =</span>
-            <span class="decomp-factor" style="background:#e8f5e9;border-color:#4caf50;color:#2e7d32">Expected +25.8%</span>
-            <span class="decomp-eq">vs Actual +25.7%</span>
-            <span style="color:var(--sage);font-weight:600">✓ Consistent (&lt;1% gap)</span>
-          </div>
-          <p style="margin-top:10px">Affiliates grew +$520K (+25.7% YoY) with a balanced driver mix: visits +20.4% and AOV +8.3%, with CVR essentially flat (−27 bps). Spend grew +23.0% ($253K vs $205K LY), slightly below GMS growth — suggesting marginal efficiency improvement. The decomposition is clean.</p>
-          <blockquote class="flag" style="margin-top:10px">
-            <strong>⚠ Rakuten cashback bug active (past ~2 weeks):</strong> Glean / ATL context confirms a "multipliers bug leading to cashback results being overstated in the past 2 weeks, related to Rakuten migration changes." Affiliates GMS may be overstated for this period. Do not use this week's Affiliates numbers for budget increase decisions until restated figures are available. The +25.7% YoY may be partially or largely artifactual.
-          </blockquote>
-          <p><strong>26-week trend:</strong> Rising. Underlying growth momentum is real, but the Rakuten bug introduces uncertainty into the current magnitude.</p>
-        </div>
-        <div class="next-step-box"><strong>Next Step:</strong> Obtain restated Affiliates GMS figures from the data team once the Rakuten cashback bug is resolved. Suspend any spend increase decisions for Affiliates until restated numbers confirm the underlying performance level.</div>
-        <div class="confidence-note"><em>Confidence: Likely explained — decomposition consistent; Rakuten bug is the active caveat that prevents full confidence. Actual performance may be lower than reported.</em></div>
-      </div>
-    </div>
-
-    <!-- ===== Video — UNEXPLAINED ===== -->
-    <div class="channel-section">
-      <div class="channel-header" onclick="toggleChannel('video')">
-        <h3>Video <span class="tier-tag" style="margin-left:8px">Spend-based (T3)</span></h3>
-        <div class="ch-meta">
-          <span class="neg">−$67,947</span>
-          <span class="neg">−3.1% YoY</span>
-          <span class="badge badge-unexplained">Unexplained</span>
-          <span style="font-size:0.8em;color:#888">Trend: Mixed</span>
-          <span class="toggle-icon" id="video-icon">&#9660;</span>
-        </div>
-      </div>
-      <div class="channel-body open" id="video-body">
-        <div class="metrics-table">
-          <table>
-            <thead><tr><th>Metric</th><th>Current (7d)</th><th>Prior Year (7d)</th><th>YoY Change</th></tr></thead>
-            <tbody>
-              <tr><td>GMS</td><td>$2,122,784</td><td>$2,190,731</td><td class="neg">−3.1%</td></tr>
-              <tr><td>Visits ⚠</td><td>851,641</td><td>260,712</td><td class="pos">+226.6% [UNEXPLAINED — see below]</td></tr>
-              <tr><td>CVR ⚠</td><td>7.27%</td><td>26.32%</td><td class="neg">−72.4% [T3 artifact — do not interpret]</td></tr>
-              <tr><td>AOV ⚠</td><td>$34.31</td><td>$31.92</td><td class="pos">+7.5% [T3 artifact — do not interpret]</td></tr>
-              <tr><td>Cost</td><td>$359,657</td><td>$473,972</td><td class="neg">−24.1%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <blockquote class="warn">
-          <strong>⚠ Tier 3 channel — CVR and AOV are mathematical artifacts. Never report as real demand signals.</strong><br>
-          For Tier 3, GMS is spend × static multiplier, not derived from visits × CVR × AOV.
-        </blockquote>
-        <div class="inconsistency-banner">
-          ⚠ <strong>Two unresolved anomalies — channel is Unexplained.</strong><br><br>
-          <strong>1. Visits +226.6% YoY (851K vs 261K LY) — inferred candidate mechanism from Paid Social discussion in team Slack (May 4, 2026), confirmation pending.</strong> During today's review meeting, Vishwa Bhuta commented "i guess this is probs when we relaunched TT?" in response to Paul Scheetz's question about a dramatic visit swing in the <em>Paid Social</em> chart. The inference to Video is an analyst extrapolation: TikTok campaigns are categorized as Video in the attribution model, so a TikTok relaunch would drive a large YoY visit spike in the Video bucket simultaneously with Paid Social. This is directionally plausible but was not stated directly about Video in Slack — it requires verification. The GMS/spend divergence (issue 2 below) remains separately unexplained and is not resolved by the TikTok relaunch hypothesis.<br><br>
-          <strong>2. GMS/spend divergence: GMS −3.1%, spend −24.1% — a 21pp gap, outside the ±5pp tolerance for Tier 3 "Expected by construction."</strong> A spend-proportional channel should show GMS and spend moving within ~5pp of each other. The 21pp divergence means GMS is materially outperforming spend on the downside (GMS declined less than spend would predict). This suggests the static multiplier may have been updated upward, or the multiplier is not being applied as expected.
-        </div>
-        <div class="expl-text">
-          <p>GMS declined −3.1% (−$68K) to $2.12M. Spend declined −24.1% ($360K vs $474K LY). For a spend-proportional Tier 3 channel, these two metrics are expected to co-move within ~5pp — but the gap is 21pp, which is outside the expected range and constitutes a Pattern G anomaly (GMS moved materially out of proportion with spend).</p>
-          <p>The visit spike of +226.6% does not translate to GMS in this channel's attribution model (GMS is spend-driven, not visits-driven), but the spike is still a data integrity flag. Prior week: Video GMS was −27.6% YoY; this week −3.1%. The significant sequential improvement in YoY rate despite a lower spend level suggests the multiplier has been revised upward relative to LY — but this is a hypothesis, not a confirmed finding.</p>
-          <p><strong>26-week trend:</strong> Mixed.</p>
-        </div>
-        <div class="next-step-box"><strong>Next Step (Immediate):</strong> (1) Confirm with the Video team whether the TikTok campaign relaunch (Vishwa Bhuta, Slack May 4) is the cause of the +226.6% visit spike — if confirmed, this resolves the visit anomaly. (2) Confirm separately whether the Video static multiplier was recently updated — this is needed to explain the GMS/spend 21pp gap, which the TikTok relaunch alone does not resolve. Tag #olive_garden_analytics or Vishwa Bhuta directly.</div>
-        <div class="confidence-note"><em>Confidence: Unexplained — visit spike has a candidate mechanism (TikTok relaunch, per Vishwa Bhuta's Slack comment today) but is not yet confirmed; GMS/spend divergence (21pp gap) remains unresolved regardless of visit explanation. Channel upgrades to Likely explained once TikTok relaunch and multiplier status are both confirmed.</em></div>
-      </div>
-    </div>
-
-    <!-- ===== SEM Brand ===== -->
-    <div class="channel-section">
-      <div class="channel-header" onclick="toggleChannel('semBrand')">
-        <h3>SEM Brand <span class="tier-tag" style="margin-left:8px">Mixed (T2)</span></h3>
-        <div class="ch-meta">
-          <span class="neg">−$212,438</span>
-          <span class="neg">−20.6% YoY</span>
-          <span class="badge badge-likely">Likely explained</span>
-          <span style="font-size:0.8em;color:#888">Trend: Declining</span>
-          <span class="toggle-icon" id="semBrand-icon">&#9660;</span>
-        </div>
-      </div>
-      <div class="channel-body open" id="semBrand-body">
-        <div class="metrics-table">
-          <table>
-            <thead><tr><th>Metric</th><th>Current (7d)</th><th>Prior Year (7d)</th><th>YoY Change</th></tr></thead>
-            <tbody>
-              <tr><td>GMS</td><td>$817,475</td><td>$1,029,913</td><td class="neg">−20.6%</td></tr>
-              <tr><td>Visits</td><td>2,509,360</td><td>3,305,264</td><td class="neg">−24.1%</td></tr>
-              <tr><td>CVR</td><td>1.16%</td><td>1.21%</td><td class="neg">−5 bps (−4.2%)</td></tr>
-              <tr><td>AOV</td><td>$28.18</td><td>$25.81</td><td class="pos">+9.2%</td></tr>
-              <tr><td>Cost</td><td>$30,111</td><td>$201,096</td><td class="neg">−85.0%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="expl-text">
-          <p><strong>Decomposition check (Tier 2 — valid with caveats):</strong></p>
-          <div class="decomp-row">
-            <span class="decomp-factor">Visits ×0.759</span><span class="decomp-eq">×</span>
-            <span class="decomp-factor">CVR ×0.958</span><span class="decomp-eq">×</span>
-            <span class="decomp-factor">AOV ×1.092</span><span class="decomp-eq">−1 =</span>
-            <span class="decomp-factor" style="background:#e8f5e9;border-color:#4caf50;color:#2e7d32">Expected −20.5%</span>
-            <span class="decomp-eq">vs Actual −20.6%</span>
-            <span style="color:var(--sage);font-weight:600">✓ Consistent (&lt;1% gap)</span>
-          </div>
-          <p style="margin-top:10px">SEM Brand declined −$212K (−20.6% YoY). The <strong>leading indicator is deliberate spend reduction (−85%, $30K vs $201K LY)</strong> — this is a portfolio decision, not a brand health issue. Visits declined proportionally (−24.1%), confirming the decline is supply-driven (less spend → fewer paid clicks → lower GMS), not a demand-side problem. CVR is essentially flat (−5 bps), which supports the supply interpretation — the underlying searcher quality is unchanged; there are just fewer of them being targeted.</p>
-          <p><strong>Pattern F (budget-driven) confirmed</strong>, though with an unusually large spend reduction (−85%) relative to GMS decline (−20.6%). The GMS decline significantly lagging the spend cut suggests strong organic/direct brand search base absorbing much of the reduction — a positive structural signal about brand health, but not actionable from this report alone.</p>
-          <p>Context (Glean / Performance Event Tracker): <strong>DE NVR test ended May 4</strong> (ROI goal raised from $1.75 to $1.90, tightening the bid floor). 24 markets turned off in Sept 2025. Portfolio bid strategy changes continue to reduce Brand spend. AOV grew +9.2%, consistent with the effect of only targeting the highest-ROI (highest-value) brand queries after the spend reduction.</p>
-          <p><strong>26-week trend:</strong> Declining (structural, intentional). This trend is expected to continue while the Brand spend constraints are in place.</p>
-        </div>
-        <div class="next-step-box"><strong>Next Step:</strong> Confirm with SEM Brand team that the −85% spend reduction is intentional and that the DE NVR test outcome is the primary driver. Monitor organic brand search health separately from this paid Brand metric to ensure the spend cut is not causing demand spillage.</div>
-        <div class="confidence-note"><em>Confidence: Likely explained — decomposition consistent; deliberate spend cut and DE NVR test end are event-level documented mechanisms. This is an intentional portfolio decision, not an anomaly requiring investigation.</em></div>
-      </div>
-    </div>
-
-    <!-- ===== Social Creator Co — UNEXPLAINED, brief ===== -->
-    <div class="channel-section">
-      <div class="channel-header" onclick="toggleChannel('socialCreator')">
-        <h3>Social Creator Co <span class="tier-tag" style="margin-left:8px">Spend-based (T3)</span></h3>
-        <div class="ch-meta">
-          <span class="neg">−$29,989</span>
-          <span class="neg">−1.5% YoY</span>
-          <span class="badge badge-unexplained">Unexplained</span>
-          <span style="font-size:0.8em;color:#888">Trend: Rising (prior)</span>
-          <span class="toggle-icon" id="socialCreator-icon">&#9654;</span>
-        </div>
-      </div>
-      <div class="channel-body" id="socialCreator-body">
-        <div class="metrics-table">
-          <table>
-            <thead><tr><th>Metric</th><th>Current (7d)</th><th>Prior Year (7d)</th><th>YoY Change</th></tr></thead>
-            <tbody>
-              <tr><td>GMS</td><td>$1,910,921</td><td>$1,940,910</td><td class="neg">−1.5%</td></tr>
-              <tr><td>Visits ⚠</td><td>1,314,785</td><td>748,516</td><td class="pos">+75.7% [T3 — limited signal]</td></tr>
-              <tr><td>CVR ⚠</td><td>4.71%</td><td>9.85%</td><td class="neg">−52.1% [T3 artifact]</td></tr>
-              <tr><td>AOV ⚠</td><td>$30.84</td><td>$26.33</td><td class="pos">+17.1% [T3 artifact]</td></tr>
-              <tr><td>Cost</td><td>$150,709</td><td>$243,239</td><td class="neg">−38.0%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="expl-text">
-          <p>Below materiality threshold (|delta| $30K, |YoY%| 1.5%). Brief analysis only. Social Creator Co is Tier 3 (spend-based); CVR and AOV are math artifacts and should not be reported.</p>
-          <p><strong>Pattern G identified (GMS/spend divergence):</strong> GMS −1.5% while spend −38.0% — a 36.5pp gap, far outside the ±5pp tolerance for Tier 3 "Expected by construction." For a spend-proportional channel, spend −38% would typically imply GMS −38%. GMS is materially outperforming spend, suggesting either the static multiplier was revised upward, or there is an underlying channel methodology change. This is an Unexplained state — no named cause identified. The small absolute delta ($30K) limits the business urgency, but the methodology question is real.</p>
-        </div>
-        <div class="next-step-box"><strong>Next Step:</strong> Confirm with the Social Creator Co / Attribution team whether the static multiplier was recently updated. The 36.5pp GMS/spend divergence is inconsistent with spend-proportional behavior and requires a methodology explanation before the channel can be labeled Likely explained.</div>
-        <div class="confidence-note"><em>Confidence: Unexplained — Pattern G (GMS/spend divergence 36.5pp) exceeds Tier 3 tolerance. Multiplier update suspected but not confirmed. Low business urgency given small absolute delta; methodology resolution still required.</em></div>
-      </div>
-    </div>
-
-    <!-- ===== App — Expected by construction, brief ===== -->
-    <div class="channel-section">
-      <div class="channel-header" onclick="toggleChannel('app')">
-        <h3>App <span class="tier-tag" style="margin-left:8px">Spend-based (T3)</span></h3>
-        <div class="ch-meta">
-          <span class="neg">−$14,360</span>
-          <span class="neg">−3.0% YoY</span>
-          <span class="badge badge-expected">Expected by construction</span>
-          <span style="font-size:0.8em;color:#888">Trend: Declining</span>
-          <span class="toggle-icon" id="app-icon">&#9654;</span>
-        </div>
-      </div>
-      <div class="channel-body" id="app-body">
-        <div class="metrics-table">
-          <table>
-            <thead><tr><th>Metric</th><th>Current (7d)</th><th>Prior Year (7d)</th><th>YoY Change</th></tr></thead>
-            <tbody>
-              <tr><td>GMS</td><td>$462,356</td><td>$476,716</td><td class="neg">−3.0%</td></tr>
-              <tr><td>Visits</td><td>0</td><td>0</td><td class="neutral">N/A (no visit attribution for this channel)</td></tr>
-              <tr><td>CVR ⚠</td><td>—</td><td>—</td><td class="neutral">N/A (T3)</td></tr>
-              <tr><td>AOV ⚠</td><td>$30.00</td><td>$30.00</td><td class="neutral">Fixed model constant</td></tr>
-              <tr><td>Cost</td><td>$77,059</td><td>$79,453</td><td class="neg">−3.0%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="expl-text">
-          <p>Below materiality threshold (|delta| $14K, |YoY%| 3.0%). App is Tier 3 (spend-based). GMS and cost both declined exactly −3.0% — the GMS multiplier is applied directly to spend, so this is expected by construction. AOV of $30.00 is a fixed model constant. No visit attribution exists. This channel is behaving exactly as the attribution model predicts. The declining trend continues at a slow rate. No investigation required.</p>
-        </div>
-        <div class="next-step-box"><strong>Next Step:</strong> No action required this week. Continue monitoring for deviation from expected GMS/cost co-movement. If the −3.0% rate accelerates, revisit App spend allocation.</div>
-        <div class="confidence-note"><em>Confidence: Expected by construction — GMS and cost co-move at exactly −3.0%, within the &lt;5pp tolerance. Declining trend continues as expected.</em></div>
-      </div>
-    </div>
-
-  </div><!-- end channel breakdown -->
-
-  <!-- Flags for Manual Review -->
-  <div class="card">
-    <h2>Flags for Manual Review</h2>
-
-    <div class="flags-tier immediate">
-      <h3>Immediate — Action Required Before Using These Numbers</h3>
-      <ul>
-        <li><strong>SEM NB — Decomposition inconsistency (gap 21.1%, Unexplained):</strong> Do not use SEM NB GMS figures for budget decisions this week. Bring to the SEM team: does the Vintage KW test (Apr 29) or Apr 13/16 bid adjustments create a keyword-mix shift that breaks the GMS = Visits × CVR × AOV identity? Owner: SEM channel team / Ha-Thanh Nguyen (Glean reference).</li>
-        <li><strong>Video — Visit spike +226.6% YoY (851K vs 261K LY), Unexplained:</strong> Extraordinary spike with no identified cause. Additionally, GMS/spend gap is 21pp — outside Tier 3 tolerance. Investigate whether a TikTok LF methodology change, pipeline reclassification, or measurement artifact explains both anomalies. Tag #olive_garden_analytics or the Video channel owner. This issue also flags a potential multiplier update.</li>
-        <li><strong>Affiliates — Rakuten cashback bug active (~2 weeks):</strong> GMS may be overstated. Do not act on Affiliates performance or budget until restated numbers are confirmed. Request restatement timeline from the Affiliates/Attribution team.</li>
-        <li><strong>SEO — Bot visits confirmed in market pages (Dannie's Slack, May 4):</strong> SEO is the #2 volume channel ($18.1M GMS). Bot visits are suppressing CVR and understating true SEO performance. Quantify bot volume and apply mitigation. Escalate to SEO data team immediately; this is not a "monitor" item given channel volume.</li>
-      </ul>
-    </div>
-
-    <div class="flags-tier monitor">
-      <h3>Monitor — Watch Next Week</h3>
-      <ul>
-        <li><strong>Paid Social — LY multiplier deflation confirmation pending:</strong> Dannie's Slack (May 4) raises the question. Team should confirm the multiplier change date and magnitude. Next week's comparison will either sustain the +50.9% (if the multiplier change is persistent) or normalize if it was a one-time restatement.</li>
-        <li><strong>Display — Post-incrementality-test trajectory:</strong> Incrementality test ended today (May 4). Monitor next week's Display YoY to separate the ongoing Feb 9 re-attribution effect from any test-period measurement influence. Also monitor whether the re-attribution scope continues to expand.</li>
-        <li><strong>Social Creator Co — Pattern G (GMS/spend divergence 36.5pp):</strong> Below materiality threshold now, but confirm whether static multiplier was updated. If unresolved, the divergence will re-appear in future runs.</li>
-      </ul>
-    </div>
-
-    <div class="flags-tier housekeeping">
-      <h3>Housekeeping</h3>
-      <ul>
-        <li><strong>BQ experiment registry unavailable:</strong> All channels capped at Likely explained; cannot reach Explained this run. Channels with named experiments (SEM NB Vintage KW, Display incrementality) are the highest priority for BQ cross-reference when access is restored.</li>
-        <li><strong>CQ-18 (26-week trend) not refreshed:</strong> Trend labels from prior run (2026-04-27). Re-query next week with a narrower date window to stay within token limits.</li>
-        <li><strong>"Other Paid" channel absent from CQ-01:</strong> Not returned this week. Confirm whether this channel is deprecated, renamed, or below the query threshold.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Data Sources -->
-  <div class="card">
-    <h2>Data Sources &amp; Run State</h2>
-    <table>
-      <thead><tr><th>Source</th><th>Query</th><th>Status</th><th>Notes</th></tr></thead>
-      <tbody>
-        <tr><td>Looker</td><td>CQ-01 (7-day channel snapshot)</td><td style="color:var(--sage);font-weight:600">✓ Fresh</td><td>Run date 2026-05-04; 10 GM channels returned; non-GM channels filtered</td></tr>
-        <tr><td>Looker</td><td>CQ-08 (Global totals)</td><td style="color:var(--sage);font-weight:600">✓ Fresh</td><td>All channels with team filter; platform-level receipts and buyer segments</td></tr>
-        <tr><td>Looker</td><td>CQ-18 (26-week trend)</td><td style="color:var(--amber);font-weight:600">⚠ Carried forward</td><td>Result size &gt;200K chars; trend labels from 2026-04-27 run used as proxy</td></tr>
-        <tr><td>BigQuery</td><td>inc_test_master_registry</td><td style="color:var(--coral);font-weight:600">✗ Unavailable</td><td>BQ not configured; confidence ceiling = Likely explained; does not upgrade Unexplained channels</td></tr>
-        <tr><td>Glean</td><td>Slack, Docs, Event Tracker</td><td style="color:var(--sage);font-weight:600">✓ Queried</td><td>Dannie's Slack (May 4), #olive_garden_analytics, Performance Event Tracker, ATL notes, Paid Social readouts</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-</div><!-- end container -->
-
-<div class="footer">
-  Growth Marketing Weekly Review &nbsp;|&nbsp; Period ending 2026-05-04 &nbsp;|&nbsp; Dashboard 9084 &nbsp;|&nbsp; Generated 2026-05-04 &nbsp;|&nbsp; Confidence: 0 Explained / 6 Likely / 3 Unexplained / 1 Expected by construction &nbsp;|&nbsp; BQ unavailable
+<footer>
+Generated by <code>analyze-dashboard</code> skill · 2026-05-11 · Data sources: Looker dashboard 9084, BigQuery <code>buyatt_mart.inc_test_master_registry</code>, Slack/Glean
+</footer>
 </div>
 
 <script>
-function toggleChannel(id) {
-  var body = document.getElementById(id + '-body');
-  var icon = document.getElementById(id + '-icon');
-  if (body.classList.contains('open')) {
-    body.classList.remove('open');
-    icon.innerHTML = '&#9654;';
-  } else {
-    body.classList.add('open');
-    icon.innerHTML = '&#9660;';
-  }
-}
+// Sortable table: click header to sort asc/desc
+document.querySelectorAll('table.sortable-table th.sortable').forEach((th, idx) => {
+  th.addEventListener('click', () => {
+    const table = th.closest('table');
+    const tbody = table.querySelector('tbody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    const asc = !th.classList.contains('sort-asc');
+    table.querySelectorAll('th').forEach(t => t.classList.remove('sort-asc', 'sort-desc'));
+    th.classList.add(asc ? 'sort-asc' : 'sort-desc');
+    rows.sort((a, b) => {
+      const av = a.cells[idx].textContent.trim();
+      const bv = b.cells[idx].textContent.trim();
+      const an = parseFloat(av.replace(/[^\d.\-+]/g, ''));
+      const bn = parseFloat(bv.replace(/[^\d.\-+]/g, ''));
+      if (!isNaN(an) && !isNaN(bn)) return asc ? an - bn : bn - an;
+      return asc ? av.localeCompare(bv) : bv.localeCompare(av);
+    });
+    rows.forEach(r => tbody.appendChild(r));
+  });
+});
 </script>
 </body>
 </html>
